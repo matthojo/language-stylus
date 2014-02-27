@@ -1,6 +1,6 @@
 {
   "name": "Stylus language support in Atom (with extra snippets)",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Adds syntax highlighting and snippets to Stylus files in Atom.",
   "repository": "https://github.com/matthojo/language-stylus",
@@ -8,6 +8,5 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
