@@ -1,5 +1,5 @@
 {
-  "name": "Stylus language support in Atom",
+  "name": "Stylus",
   "version": "0.2.0",
   "private": true,
   "description": "Adds syntax highlighting and snippets to Stylus files in Atom.",
