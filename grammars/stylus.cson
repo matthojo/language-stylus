@@ -42,10 +42,6 @@
     'name': 'variable.language.stylus'
   }
   {
-    'match': '\\b(.*)(?=\\s*=)'
-    'name': 'variable.language.stylus'
-  }
-  {
     'match': '@([-\\w]+)'
     'name': 'keyword.stylus'
   }
