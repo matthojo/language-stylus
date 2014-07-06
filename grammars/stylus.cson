@@ -23,7 +23,7 @@
     'captures':
       '1':
         'name': 'entity.name.function.stylus'
-    'match': '(^[-a-zA-Z_][-\\w]*)?(\\()'
+    'match': '(^[-a-zA-Z_\$][-\\w]*)?(\\()'
     'name': 'meta.function.stylus'
   }
   {
