@@ -1,12 +1,24 @@
 {
-  "name": "Stylus",
+  "name": "language-stylus",
   "version": "0.4.0",
-  "private": true,
+  "author": "Matthew Harrison-Jones",
   "description": "Adds syntax highlighting and snippets to Stylus files in Atom.",
-  "repository": "https://github.com/matthojo/language-stylus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthojo/language-stylus"
+  },
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/matthojo/language-stylus/issues"
+  },
+  "homepage": "https://github.com/matthojo/language-stylus",
+  "keywords": [
+    "stylus",
+    "language",
+    "atom"
+  ]
 }
