@@ -45,8 +45,8 @@
     'name': 'variable.other.language.stylus'
   }
   {
-    'match': '^ *&'
-    'name': 'entity.language.stylus'
+    'match': '(&)'
+    'name': 'keyword.control.language.stylus'
   }
   {
     'match': '(arguments)'
