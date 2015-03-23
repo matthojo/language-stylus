@@ -1,6 +1,6 @@
 {
   "name": "Stylus",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "Matthew Harrison-Jones",
   "description": "Adds syntax highlighting and snippets to Stylus files in Atom.",
   "repository": "https://github.com/matthojo/language-stylus",
