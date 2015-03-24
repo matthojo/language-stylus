@@ -1167,10 +1167,10 @@
     'prefix': 'va'
     'body': 'vertical-align bottom$0'
   'vertical-align middle':
-    'prefix': 'va'
+    'prefix': 'vam'
     'body': 'vertical-align middle$0'
   'vertical-align sub':
-    'prefix': 'va'
+    'prefix': 'vasb'
     'body': 'vertical-align sub$0'
   'vertical-align super':
     'prefix': 'vas'
