@@ -957,16 +957,16 @@
     'prefix': 'pe'
     'body': 'pointer-events none$0'
   'position absolute':
-    'prefix': 'po'
+    'prefix': 'poa'
     'body': 'position absolute$0'
   'position fixed':
-    'prefix': 'po'
+    'prefix': 'pof'
     'body': 'position fixed$0'
   'position relative':
     'prefix': 'por'
     'body': 'position relative$0'
   'position static':
-    'prefix': 'po'
+    'prefix': 'pos'
     'body': 'position static$0'
   'resize both':
     'prefix': 'reb'
