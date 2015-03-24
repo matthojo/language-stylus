@@ -699,7 +699,7 @@
     'prefix': 'ff'
     'body': 'font-family Verdana, Geneva, Tahoma, sans-serif$0'
   'font-size':
-    'prefix': 'fs'
+    'prefix': 'fsz'
     'body': 'font-size ${1:12}${2:px}$0'
   'font-style italic':
     'prefix': 'fsi'
