@@ -680,11 +680,14 @@
   'float right':
     'prefix': 'fl'
     'body': 'float right$0'
+  'font-family':
+    'prefix': 'ff'
+    'body': 'font-family $0'
   'font-family Lucida Sans':
     'prefix': 'ffl'
     'body': 'font-family "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif$0'
   'font-family Arial':
-    'prefix': 'ff'
+    'prefix': 'ffa'
     'body': 'font-family Arial, Helvetica, sans-serif$0'
   'font-family Monaco':
     'prefix': 'ffm'
@@ -693,10 +696,10 @@
     'prefix': 'fft'
     'body': 'font-family "Times New Roman", Times, serif$0'
   'font-family Trebuchet MS':
-    'prefix': 'ff'
+    'prefix': 'fftr'
     'body': 'font-family "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif$0'
   'font-family Verdana':
-    'prefix': 'ff'
+    'prefix': 'ffv'
     'body': 'font-family Verdana, Geneva, Tahoma, sans-serif$0'
   'font-size':
     'prefix': 'fs'
