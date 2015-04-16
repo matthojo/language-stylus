@@ -1241,6 +1241,93 @@
   'word-wrap normal':
     'prefix': 'ww'
     'body': 'word-wrap normal$0'
-  'zoom':
-    'prefix': 'z'
-    'body': 'zoom ${1:1}$0'
+  'display flex':
+    'prefix': 'df'
+    'body': 'display flex$0'
+  'flex-direction':
+    'prefix': 'fd'
+    'body': 'flex-direction$0'
+  'flex-direction column':
+    'prefix': 'fdc'
+    'body': 'flex-direction column$0'
+  'flex-direction row':
+    'prefix': 'fdr'
+    'body': 'flex-direction row$0'
+  'flex-direction row-reverse':
+    'prefix': 'fdrr'
+    'body': 'flex-direction row-reverse$0'
+  'flex-direction column-reverse':
+    'prefix': 'fdcr'
+    'body': 'flex-direction column-reverse$0'
+  'flex-wrap':
+    'prefix': 'fwr'
+    'body': 'flex-wrap wrap$0'
+  'flex-wrap wrap-reverse':
+    'prefix': 'fwrr'
+    'body': 'flex-wrap wrap-reverse$0'
+  'flex-flow row wrap':
+    'prefix': 'ffr'
+    'body': 'flex-flow row wrap$0'
+  'flex-flow column wrap':
+    'prefix': 'ffc'
+    'body': 'flex-flow column wrap$0'
+  'justify-content':
+    'prefix': 'jc'
+    'body': 'justify-content$0'
+  'justify-content flex-start':
+    'prefix': 'jcfs'
+    'body': 'justify-content flex-start$0'
+  'justify-content flex-end':
+    'prefix': 'jcfe'
+    'body': 'justify-content flex-end$0'
+  'justify-content center':
+    'prefix': 'jcc'
+    'body': 'justify-content center$0'
+  'justify-content space-between':
+    'prefix': 'jcsb'
+    'body': 'justify-content space-between$0'
+  'justify-content space-around':
+    'prefix': 'jcsa'
+    'body': 'justify-content space-around$0'
+  'align-items':
+    'prefix': 'ai'
+    'body': 'align-items$0'
+  'align-items flex-start':
+    'prefix': 'aifs'
+    'body': 'align-items flex-start$0'
+  'align-items flex-end':
+    'prefix': 'aife'
+    'body': 'align-items flex-end$0'
+  'align-items center':
+    'prefix': 'aic'
+    'body': 'align-items center$0'
+  'align-items stretch':
+    'prefix': 'ais'
+    'body': 'align-items stretch$0'
+  'align-items space-between':
+    'prefix': 'aisb'
+    'body': 'align-items space-between$0'
+  'align-items space-around':
+    'prefix': 'aisa'
+    'body': 'align-items space-around$0'
+  'align-content':
+    'prefix': 'ac'
+    'body': 'align-content$0'
+  'align-content flex-start':
+    'prefix': 'acfs'
+    'body': 'align-content flex-start$0'
+  'align-content flex-end':
+    'prefix': 'acfe'
+    'body': 'align-content flex-end$0'
+  'align-content center':
+    'prefix': 'acc'
+    'body': 'align-content center$0'
+  'align-content space-between':
+    'prefix': 'acsb'
+    'body': 'align-content space-between$0'
+  'align-content space-around':
+    'prefix': 'acsa'
+    'body': 'align-content space-around$0'
+  'align-content stretch':
+    'prefix': 'acs'
+    'body': 'align-content stretch$0'
