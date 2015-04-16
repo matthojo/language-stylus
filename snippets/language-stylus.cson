@@ -1337,3 +1337,36 @@
   'align-content stretch':
     'prefix': 'acs'
     'body': 'align-content stretch$0'
+  'align-self':
+    'prefix': 'as'
+    'body': 'align-self$0'
+  'align-self auto':
+    'prefix': 'asa'
+    'body': 'align-self auto$0'
+  'align-self flex-start':
+    'prefix': 'asfs'
+    'body': 'align-self flex-start$0'
+  'align-self flex-end':
+    'prefix': 'asfe'
+    'body': 'align-self flex-end$0'
+  'align-self center':
+    'prefix': 'asc'
+    'body': 'align-self center$0'
+  'align-self baseline':
+    'prefix': 'asb'
+    'body': 'align-self baseline$0'
+  'align-self stretch':
+    'prefix': 'ass'
+    'body': 'align-self stretch$0'
+  'flex-grow':
+    'prefix': 'fg'
+    'body': 'flex-grow 1$0'
+  'flex-shrink':
+    'prefix': 'fsh'
+    'body': 'flex-shrink 1$0'
+  'flex-basis':
+    'prefix': 'fb'
+    'body': 'flex-basis$0'
+  'flex':
+    'prefix': 'fx'
+    'body': 'flex 1$0'
