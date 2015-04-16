@@ -1241,6 +1241,12 @@
   'word-wrap normal':
     'prefix': 'ww'
     'body': 'word-wrap normal$0'
+  'zoom':
+    'prefix': 'zo'
+    'body': 'zoom ${1:1}$0'
+  'z-index':
+    'prefix': 'z'
+    'body': 'z-index ${1:1}$0'
   'display flex':
     'prefix': 'df'
     'body': 'display flex$0'
