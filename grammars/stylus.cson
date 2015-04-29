@@ -68,16 +68,16 @@
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.entity.stylus'
-    'match': '(:+)\\b(after|before|first-letter|first-line|selection)\\b'
-    'name': 'entity.other.attribute-name.pseudo-element.stylus'
+        'name': 'punctuation.definition.entity.css'
+    'match': '(:+)((-(moz|webkit|ms)-)?(after|before|first-letter|first-line|selection))\\b'
+    'name': 'entity.other.attribute-name.pseudo-element.css'
   }
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.entity.stylus'
+        'name': 'punctuation.definition.entity.css'
     'match': '(:)\\b(active|hover|focus|target|link|any-link|local-link|visited|scope|current|past|future|dir|lang|enabled|disabled|checked|indeterminate|default|valid|invalid|in-range|out-of-range|required|optional|read-only|read-write|root|first-child|last-child|only-child|nth-child|nth-last-child|first-of-type|last-of-type|nth-of-type|nth-last-of-type|only-of-type|nth-match|nth-last-match|empty|not|column|nth-column|nth-last-column)\\b'
-    'name': 'entity.other.attribute-name.pseudo-class.stylus'
+    'name': 'entity.other.attribute-name.pseudo-class.css'
   }
   {
     'captures':
@@ -89,13 +89,13 @@
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.entity.stylus'
+        'name': 'punctuation.definition.entity.css'
     'match': '(#)[a-zA-Z][a-zA-Z0-9_-]*'
-    'name': 'entity.other.attribute-name.id.stylus'
+    'name': 'entity.other.attribute-name.id.css'
   }
   {
     'match': '(-webkit-|-moz\\-|-ms-|-o-)'
-    'name': 'meta.vendor-prefix.stylus'
+    'name': 'meta.vendor-prefix.css'
   }
   {
     'match': '(\\b|\\s)(!important|for|in|return|true|false|null|if|else|unless|return)\\b'
@@ -106,13 +106,37 @@
     'name': 'keyword.operator.stylus'
   }
   {
+    'begin': "^\\s*(return)"
+    'beginCaptures':
+        '1':
+          'name': 'keyword.control.stylus'
+    'end': '(;)|(?=$)'
+    'endCaptures':
+        '1':
+          'name': 'punctuation.terminator.statement.stylus'
+    'name': 'meta.property-value.stylus'
+    ]
+  }
+  {
     'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.stylus'
     'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.stylus'
     'name': 'string.quoted.double.stylus'
   }
   {
     'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.stylus'
     'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.stylus'
     'name': 'string.quoted.single.stylus'
   }
   {
