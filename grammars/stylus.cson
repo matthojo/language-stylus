@@ -1,8 +1,13 @@
+'scopeName': 'source.css.stylus'
+'name': 'Stylus'
 'fileTypes': [
   'styl'
   'stylus'
+  'css.styl'
+  'css.stylus'
 ]
-'name': 'Stylus'
+'foldingStartMarker': '\\{\\s*$'
+'foldingStopMarker': '^\\s*\\}'
 'patterns': [
   {
     'captures':
