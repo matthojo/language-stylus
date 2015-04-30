@@ -10,16 +10,19 @@
 'foldingStopMarker': '^\\s*\\}'
 'patterns': [
   {
-    'include': '#variable'
-  }
-  {
-    'include': '#property_values'
-  }
-  {
     'include': '#general'
   }
   {
     'include': '#rules'
+  }
+  {
+    'include': '#selectors_css'
+  }
+  {
+    'include': '#property_css'
+  }
+  {
+    'include': '#property_values'
   }
   {
     'include': '#property_list'
@@ -29,9 +32,6 @@
   'general':
     'comment': 'Grammers that should be everywhere'
     'patterns': [
-      {
-        'include': '#variable'
-      }
       {
         'include': '#comment_block'
       }
@@ -94,11 +94,11 @@
     'match': '(?:^[ \\t]+)?(\\/\\/).*$\\n?'
     'name': 'comment.line.stylus'
   'comment_block':
-    'begin': '/\\*'
+    'begin': '\\/\\*'
     'captures':
       '0':
         'name': 'punctuation.definition.comment.stylus'
-    'end': '\\*/'
+    'end': '\\*\\/'
     'name': 'comment.block.stylus'
   'string-quoted':
     'patterns': [
@@ -156,7 +156,7 @@
     'match': '[\\+|\\-]?(\\s*)?([0-9]+(\\.[0-9]+)?|\\.[0-9]+)'
     'name': 'constant.numeric.stylus'
   'constant_property_value':
-    'match': '\\b(absolute|all-scroll|always|armenian|auto|baseline|below|bidi-override|block|bold|bolder|both|bottom|break-all|break-word|butt|capitalize|center|char|circle|cjk-ideographic|col-resize|collapse|crosshair|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|left|lighter|line-edge|line-through|line|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|outset|outside|overline|pointer|preserve-3d|progress|relative|repeat-x|repeat-y|repeat|right|ridge|round|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|vertical-ideographic|vertical-text|visible|w-resize|wait|whitespace|zero|true|false|vertical|horizontal)\\b'
+    'match': '\\b(absolute|all(-scroll)?|always|armenian|auto|avoid|baseline|below|bidi-override|block|bold(er)?|(border|content|padding)-box|both|bottom|break-all|break-word|capitalize|center|char|circle|cjk-ideographic|col-resize|collapse|crosshair|cursive|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fantasy|fixed|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|left|lighter|line-edge|line-through|line|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|monospace|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|pointer|pre(-(wrap|line))?|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|(sans-)?serif|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|sub|super|sw-resize|table(-(row|cell|footer-group|header-group))?|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|zero|smaller|larger|((xx?-)?(small(er)?|large(r)?))|painted|fill|stroke)\\b'
     'name': 'support.constant.property-value.stylus'
   'constant_rgb':
     'match': '(?<!scale3d\\(|translate3d\\(|rotate3d\\()(\\b0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\\s*,\\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\\s*,\\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\\b)'
@@ -314,26 +314,7 @@
         'include': '#rules'
       }
       {
-        'include': '#properties'
-      }
-      {
         'include': '$self'
-      }
-    ]
-  'property_name':
-    'comment': 'Reversal order is important; KEEP IT. Also when adding new properties add them to the error checker below!'
-    'match': '((?<=\\s|^)(-webkit-[A-Za-z-]+|-moz-[A-Za-z-]+|-o-[A-Za-z-]+|-ms-[A-Za-z-]+|-khtml-[A-Za-z-]+))|\\b([0-9]{1,3}\\%|zoom|z-index|y|x|wrap|word-wrap|word-spacing|word-break|word|width|widows|white-space-collapse|white-space|white|weight|volume|voice-volume|voice-stress|voice-rate|voice-pitch-range|voice-pitch|voice-family|voice-duration|voice-balance|voice|visibility|vertical-align|variant|user-select|up|unicode-bidi|unicode|trim|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform|top-width|top-style|top-right-radius|top-left-radius|top-color|top|timing-function|text-wrap|text-transform|text-shadow|text-replace|text-outline|text-justify|text-indent|text-height|text-emphasis|text-decoration|text-align-last|text-align|text|target-position|target-new|target-name|target|table-layout|tab-size|style-type|style-position|style-image|style|stroke|string-set|stretch|stress|stacking-strategy|stacking-shift|stacking-ruby|stacking|src|speed|speech-rate|speech|speak-punctuation|speak-numeral|speak-header|speak|span|spacing|space-collapse|space|sizing|size-adjust|size|shadow|respond-to|rule-width|rule-style|rule-color|rule|ruby-span|ruby-position|ruby-overhang|ruby-align|ruby|rows|rotation-point|rotation|role|right-width|right-style|right-color|right|richness|rest-before|rest-after|rest|resource|resolution|resize|reset|replace|repeat|rendering-intent|rate|radius|quotes|punctuation-trim|punctuation|property|profile|presentation-level|presentation|position|pointer-events|point|play-state|play-during|play-count|pitch-range|pitch|phonemes|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pack|overhang|overflow-y|overflow-x|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|origin|orientation|orient|ordinal-group|opacity|offset|numeral|new|nav-up|nav-right|nav-left|nav-index|nav-down|nav|name|move-to|model|min-width|min-height|min|max-width|max-height|max|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marquee|marks|mark-before|mark-after|marker|mark|margin-top|margin-right|margin-left|margin-bottom|margin|mask-image|list-style-type|list-style-position|list-style-image|list-style|list|lines|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-height|line|level|letter-spacing|length|left-width|left-style|left-color|left|label|justify|iteration-count|inline-box-align|initial-value|initial-size|initial-before-align|initial-before-adjust|initial-after-align|initial-after-adjust|index|indent|increment|image-resolution|image-orientation|image|icon|hyphens|hyphenate-resource|hyphenate-lines|hyphenate-character|hyphenate-before|hyphenate-after|hyphenate|height|header|hanging-punctuation|grid-rows|grid-columns|grid|gap|font-weight|font-variant|font-variant-ligatures|font-style|font-stretch|font-size-adjust|font-size|font-family|font|float-offset|float|flex-group|flex|fit-position|fit|fill|filter|family|empty-cells|emphasis|elevation|duration|drop-initial-value|drop-initial-size|drop-initial-before-align|drop-initial-before-adjust|drop-initial-after-align|drop-initial-after-adjust|drop|down|dominant-baseline|display-role|display-model|display|direction|delay|decoration-break|decoration|cursor|cue-before|cue-after|cue|crop|counter-reset|counter-increment|counter|count|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|column-break-before|column-break-after|column|color-profile|color|collapse|clip|clear|character|caption-side|break-inside|break-before|break-after|break|box-sizing|box-shadow|box-pack|box-orient|box-ordinal-group|box-lines|box-flex-group|box-flex|box-direction|box-decoration-break|box-align|box|bottom-width|bottom-style|bottom-right-radius|bottom-left-radius|bottom-color|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-length|border-left-width|border-left-style|border-left-color|border-left|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-target|bookmark-level|bookmark-label|bookmark|binding|bidi|before|baseline-shift|baseline|balance|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-break|background-attachment|background|azimuth|attachment|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-duration|animation-direction|animation-delay|animation|alignment-baseline|alignment-adjust|alignment|align-last|align|after|adjust|order)\\b'
-    'name': 'support.type.property-name.stylus'
-  'property_name_error':
-    'match': '(?<![a-z-])(?!-(top|right|left|bottom|color|radius|last|inside|width|before|after|value|size|type|position|style|image|strategy|shift|align|adjust)\\b|-webkit-[A-Za-z]+\\b|-moz-[A-Za-z]+\\b|-o-[A-Za-z]+\\b|-ms-[A-Za-z]+\\b|-khtml-[A-Za-z]+\\b|z-index\\b|[0-9]{1,3}\\%\\b|zoom\\b|y\\b|x\\b|wrap\\b|word-wrap\\b|word-spacing\\b|word-break\\b|word\\b|width\\b|widows\\b|white-space-collapse\\b|white-space\\b|white\\b|weight\\b|volume\\b|voice-volume\\b|voice-stress\\b|voice-rate\\b|voice-pitch-range\\b|voice-pitch\\b|voice-family\\b|voice-duration\\b|voice-balance\\b|voice\\b|visibility\\b|vertical-align\\b|variant\\b|user-select\\b|up\\b|unicode-bidi\\b|unicode\\b|u\\b|tt\\b|trim\\b|transition-timing-function\\b|transition-property\\b|transition-duration\\b|transition-delay\\b|transition\\b|transform\\b|top-width\\b|top-style\\b|top-right-radius\\b|top-left-radius\\b|top-color\\b|top\\b|timing-function\\b|text-wrap\\b|text-transform\\b|text-shadow\\b|text-replace\\b|text-outline\\b|text-justify\\b|text-indent\\b|text-height\\b|text-emphasis\\b|text-decoration\\b|text-align-last\\b|text-align\\b|text\\b|target-position\\b|target-new\\b|target-name\\b|target\\b|table-layout\\b|tab-size\\b|style-type\\b|style-position\\b|style-image\\b|style\\b|string-set\\b|stroke\\b|strike\\b|stretch\\b|stress\\b|stacking-strategy\\b|stacking-shift\\b|stacking-ruby\\b|stacking\\b|src\\b|speed\\b|speech-rate\\b|speech\\b|speak-punctuation\\b|speak-numeral\\b|speak-header\\b|speak\\b|span\\b|spacing\\b|space-collapse\\b|space\\b|sizing\\b|size-adjust\\b|size\\b|shadow\\b|s\\b|respond-to\\b|rule-width\\b|rule-style\\b|rule-color\\b|rule\\b|ruby-span\\b|ruby-position\\b|ruby-overhang\\b|ruby-align\\b|ruby\\b|rows\\b|rotation-point\\b|rotation\\b|role\\b|right-width\\b|right-style\\b|right-color\\b|right\\b|richness\\b|rest-before\\b|rest-after\\b|rest\\b|resource\\b|resolution\\b|resize\\b|reset\\b|replace\\b|repeat\\b|rendering-intent\\b|rate\\b|radius\\b|quotes\\b|punctuation-trim\\b|punctuation\\b|property\\b|profile\\b|presentation-level\\b|presentation\\b|position\\b|pointer-events\\b|point\\b|play-state\\b|play-during\\b|play-count\\b|pitch-range\\b|pitch\\b|phonemes\\b|pause-before\\b|pause-after\\b|pause\\b|page-policy\\b|page-break-inside\\b|page-break-before\\b|page-break-after\\b|page\\b|padding-top\\b|padding-right\\b|padding-left\\b|padding-bottom\\b|padding\\b|pack\\b|overhang\\b|overflow-y\\b|overflow-x\\b|overflow-style\\b|overflow\\b|outline-width\\b|outline-style\\b|outline-offset\\b|outline-color\\b|outline\\b|orphans\\b|origin\\b|orientation\\b|orient\\b|ordinal-group\\b|opacity\\b|offset\\b|numeral\\b|new\\b|nav-up\\b|nav-right\\b|nav-left\\b|nav-index\\b|nav-down\\b|nav\\b|name\\b|move-to\\b|model\\b|min-width\\b|min-height\\b|min\\b|max-width\\b|max-height\\b|max\\b|marquee-style\\b|marquee-speed\\b|marquee-play-count\\b|marquee-direction\\b|marquee\\b|marks\\b|mark-before\\b|mark-after\\b|marker\\b|mark\\b|margin-top\\b|margin-right\\b|margin-left\\b|margin-bottom\\b|margin\\b|mask-image\\b|list-style-type\\b|list-style-position\\b|list-style-image\\b|list-style\\b|list\\b|lines\\b|line-stacking-strategy\\b|line-stacking-shift\\b|line-stacking-ruby\\b|line-stacking\\b|line-height\\b|line\\b|level\\b|letter-spacing\\b|length\\b|left-width\\b|left-style\\b|left-color\\b|left\\b|label\\b|justify\\b|iteration-count\\b|inline-box-align\\b|initial-value\\b|initial-size\\b|initial-before-align\\b|initial-before-adjust\\b|initial-after-align\\b|initial-after-adjust\\b|index\\b|indent\\b|increment\\b|image-resolution\\b|image-orientation\\b|image\\b|icon\\b|hyphens\\b|hyphenate-resource\\b|hyphenate-lines\\b|hyphenate-character\\b|hyphenate-before\\b|hyphenate-after\\b|hyphenate\\b|height\\b|header\\b|hanging-punctuation\\b|grid-rows\\b|grid-columns\\b|grid\\b|gap\\b|font-weight\\b|font-variant\\b|font-variant-ligatures\\b|font-style\\b|font-stretch\\b|font-size-adjust\\b|font-size\\b|font-family\\b|font\\b|float-offset\\b|float\\b|flex-group\\b|flex\\b|fit-position\\b|fit\\b|fill\\b|filter\\b|family\\b|empty-cells\\b|emphasis\\b|elevation\\b|duration\\b|drop-initial-value\\b|drop-initial-size\\b|drop-initial-before-align\\b|drop-initial-before-adjust\\b|drop-initial-after-align\\b|drop-initial-after-adjust\\b|drop\\b|down\\b|dominant-baseline\\b|display-role\\b|display-model\\b|display\\b|direction\\b|delay\\b|decoration-break\\b|decoration\\b|cursor\\b|cue-before\\b|cue-after\\b|cue\\b|crop\\b|counter-reset\\b|counter-increment\\b|counter\\b|count\\b|content\\b|columns\\b|column-width\\b|column-span\\b|column-rule-width\\b|column-rule-style\\b|column-rule-color\\b|column-rule\\b|column-gap\\b|column-fill\\b|column-count\\b|column-break-before\\b|column-break-after\\b|column\\b|color-profile\\b|color\\b|collapse\\b|clip\\b|clear\\b|character\\b|center\\b|caption-side\\b|break-inside\\b|break-before\\b|break-after\\b|break\\b|box-sizing\\b|box-shadow\\b|box-pack\\b|box-orient\\b|box-ordinal-group\\b|box-lines\\b|box-flex-group\\b|box-flex\\b|box-direction\\b|box-decoration-break\\b|box-align\\b|box\\b|bottom-width\\b|bottom-style\\b|bottom-right-radius\\b|bottom-left-radius\\b|bottom-color\\b|bottom\\b|border-width\\b|border-top-width\\b|border-top-style\\b|border-top-right-radius\\b|border-top-left-radius\\b|border-top-color\\b|border-top\\b|border-style\\b|border-spacing\\b|border-right-width\\b|border-right-style\\b|border-right-color\\b|border-right\\b|border-radius\\b|border-length\\b|border-left-width\\b|border-left-style\\b|border-left-color\\b|border-left\\b|border-image\\b|border-color\\b|border-collapse\\b|border-bottom-width\\b|border-bottom-style\\b|border-bottom-right-radius\\b|border-bottom-left-radius\\b|border-bottom-color\\b|border-bottom\\b|border\\b|bookmark-target\\b|bookmark-level\\b|bookmark-label\\b|bookmark\\b|binding\\b|bidi\\b|big\\b|before\\b|baseline-shift\\b|baseline\\b|balance\\b|background-size\\b|background-repeat\\b|background-position\\b|background-origin\\b|background-image\\b|background-color\\b|background-clip\\b|background-break\\b|background-attachment\\b|background\\b|azimuth\\b|attachment\\b|applet\\b|appearance\\b|animation-timing-function\\b|animation-play-state\\b|animation-name\\b|animation-iteration-count\\b|animation-duration\\b|animation-direction\\b|animation-delay\\b|animation\\b|alignment-baseline\\b|alignment-adjust\\b|alignment\\b|align-last\\b|align\\b|after\\b|adjust\\b|acronym\\b)[a-z\\-\\_]+'
-    'name': 'invalid.illegal'
-  'property_names':
-    'patterns': [
-      {
-        'include': '#property_name'
-      }
-      {
-        'include': '#property_name_error'
       }
     ]
   'property-reference':
@@ -350,7 +331,7 @@
         'include': '#string_double'
       }
       {
-        'include': '#constant_stylus_functions'
+        'include': '#escape'
       }
       {
         'include': '#constant_hex'
@@ -383,6 +364,9 @@
         'include': '#constant_deprecated_color'
       }
       {
+        'include': '#constant_stylus_functions'
+      }
+      {
         'include': '#constant_functions'
       }
     ]
@@ -395,13 +379,7 @@
         'include': '#general'
       }
       {
-        'include': '#hash-access'
-      }
-      {
         'include': '#rule_at'
-      }
-      {
-        'include': '#selectors_css'
       }
     ]
   'selector_attribute':
@@ -495,7 +473,7 @@
     ]
   'selectors_css':
     'comment': 'CSS selectors. Since we can\'t rely on curly braces or indentation, the only option here is to test whether line starts with valid selector component (id, class, tag, pseudo-element/class) unfortunately that means duplicating those regular expressions'
-    'begin': '(^)\\s*(?=font(?!\\s*:\\s|-|.*?(?:\\/|normal|bold|light(er?)|serif|sans|monospace|\\b\\d+(?:\\b|px|r?em|%)|[\'"][^\\]]*$))|cursor(?!\\s*[:;]\\s|-|.*?(?:(?:url\\s*\\()|(?:-moz-|-webkit-|-ms-)?(?:auto|default|none|context-menu|help|pointer|progress|wait|cell|crosshair|text|vertical-text|alias|copy|move|no-drop|not-allowed|e-resize|n-resize|ne-resize|nw-resize|s-resize|se-resize|sw-resize|w-resize|ew-resize|ns-resize|nesw-resize|nwse-resize|col-resize|row-resize|all-scroll|zoom-in|zoom-out|grab|grabbingnormal|bold|light(er?)|serif|sans|monospace)))|((altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern|#HTMLelementsa|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp)\\s*([\\s,.#\\[]|:[^\\s]|(?=\\{|$)))|([:~\\>\\[*\\/])|(\\+\\s*[\\w$-]+\\b\\s*(?!\\())|(\\d+(\\.\\d+)?%|(from|to)\\b)|(\\$[\\w$-]+\\b\\s*(?=$|\\{))|(\\.[a-zA-Z0-9_-]+)|(\\#[a-zA-Z0-9_-]+)|(([\\w\\d_-]+)?(\\&)([\\w\\d_-]+)?))'
+    'begin': '(^|(?<=\\*/|\\}))\\s*(?=font(?!\\s*:\\s|-|.*?(?:\\/|normal|bold|light(er?)|serif|sans|monospace|\\b\\d+(?:\\b|px|r?em|%)|[\'"][^\\]]*$))|cursor(?!\\s*[:;]\\s|-|.*?(?:(?:url\\s*\\()|(?:-moz-|-webkit-|-ms-)?(?:auto|default|none|context-menu|help|pointer|progress|wait|cell|crosshair|text|vertical-text|alias|copy|move|no-drop|not-allowed|e-resize|n-resize|ne-resize|nw-resize|s-resize|se-resize|sw-resize|w-resize|ew-resize|ns-resize|nesw-resize|nwse-resize|col-resize|row-resize|all-scroll|zoom-in|zoom-out|grab|grabbingnormal|bold|light(er?)|serif|sans|monospace)))|((altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern|#HTMLelementsa|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp)\\s*([\\s,.#\\[]|:[^\\s]|(?=\\{|$)))|([:~>\\[*\\/])|(\\+\\s*[\\w$-]+\\b\\s*(?!\\())|(\\d+(\\.\\d+)?%|(from|to)\\b)|(\\$[\\w$-]+\\b\\s*(?=$|\\{))|(\\.[a-zA-Z0-9_-]+)|(\\#[a-zA-Z0-9_-]+)|(([\\w\\d_-]+)?(\\&)([\\w\\d_-]+)?))'
     'patterns': [
       {
         'include': '#comma'
@@ -534,6 +512,52 @@
       '0':
         'name': 'punctuation.definition.string.end.stylus'
     'name': 'string.quoted.double.stylus'
+  'property_css':
+    'begin': '(?<=^|;|{)\\s*(?=([a-zA-Z0-9_-]|(\\{(.*?)\\})|(/\\*.*?\\*/))+\\s*[:\\s]\\s*(?!(\\s*\\{))(?![^}]*?\\{[^}]*($|\\})))'
+    'end': '(?=\\}|;)|(?<!,)\\s*\\n'
+    'patterns': [
+      {
+        'include': '#comment_block'
+      }
+      {
+        'include': '#comment_line'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'begin': '(?<!^|;|{)\\s*(?:(:)|\\s)'
+        'beginCaptures':
+            '1':
+              'name': 'punctuation.separator.key-value.stylus'
+        'end': '(;)|(?=\\})|(?=(?<!\\,)\\s*\\n)'
+        'endCaptures':
+            '1':
+              'name': 'punctuation.terminator.rule.stylus'
+        'patterns': [
+          {
+            'include': '#comment_block'
+          }
+          {
+            'include': '#comment_line'
+          }
+          {
+            'include': '#property_values'
+          }
+          {
+            'include': '#expression'
+          }
+        ]
+      }
+      {
+        'match': '-(moz|o|ms|webkit|khtml)-'
+        'name': 'support.type.property-name.vendor-prefix.stylus'
+      }
+      {
+        'match': '.'
+        'name': 'support.property-name.stylus'
+      }
+    ]
   'tag_parent_reference':
     'match': '\\&'
     'name': 'entity.name.tag.reference.stylus'
