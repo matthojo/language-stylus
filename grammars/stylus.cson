@@ -597,6 +597,51 @@
         'include': '#selectors'
       }
     ]
+  'attribute-selector':
+    'begin': '\\[(?=[^\\]]*\\])'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.entity.start.stylus'
+    'end': '\\]'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.entity.end.stylus'
+    'patterns': [
+      {
+        'begin': '(?<=\\[)|(?<=\\{)'
+        'end': '(?=[|~=\\]\\s])'
+        'patterns': [
+          {
+            'include': '#interpolation'
+          }
+          {
+            'match': '.'
+            'captures':
+              '0':
+                'name': 'entity.other.attribute-name.stylus'
+          }
+        ]
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'match': '([|~]?=)'
+        'captures':
+          '1':
+            'name': 'keyword.operator.stylus'
+      }
+      {
+        'include': '#string-quoted'
+      }
+      {
+        'match': '.'
+        'captures':
+          '0':
+            'name': 'string.unquoted.stylus'
+      }
+    ]
+    'name': 'meta.attribute-selector.stylus'
   'selectors':
     'comment': 'Stuff for Selectors.'
     'patterns': [
@@ -605,6 +650,9 @@
       }
       {
         'include': '#interpolation'
+      }
+      {
+        'include': '#attribute-selector'
       }
       {
         'include': '#selector_entities'
