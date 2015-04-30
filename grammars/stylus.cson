@@ -485,18 +485,63 @@
         'name': 'punctuation.definition.entity.css'
     'match': '(#)[a-zA-Z][a-zA-Z0-9_-]*'
     'name': 'entity.other.attribute-name.id.css'
-  'selector_pseudo_class':
-    'captures':
-      '1':
-        'name': 'punctuation.definition.entity.css'
-    'match': '(:)\\b(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child()|nth-last-child()|nth-of-type()|nth-last-of-type()|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid)(\\([-+0-9A-Za-z]*\\))?'
-    'name': 'entity.other.attribute-name.pseudo-class.css'
-  'selector_pseudo_element':
-    'captures':
-      '1':
-        'name': 'punctuation.definition.entity.css'
-    'match': '(:+)((-(moz|webkit|ms)-)?(after|before|first-letter|first-line|selection))\\b'
-    'name': 'entity.other.attribute-name.pseudo-element.css'
+  'selector_pseudo':
+    'patterns': [
+      {
+        'match': '(:)(active|checked|default|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|last-child|last-of-type|left|link|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|target|valid|visited)\\b'
+        'captures':
+          '1': 'name': 'puncutation.definition.entity.stylus'
+        'name': 'entity.other.attribute-name.pseudo-class.stylus'
+      }
+      {
+        'match': '(:?:)(before|after)\\b'
+        'captures':
+          '1':
+            'name': 'puncutation.definition.entity.stylus'
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      }
+      {
+        'match': '(::)(first-letter|first-number|selection)\\b'
+        'captures':
+          '1':
+            'name': 'puncutation.definition.entity.stylus'
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      }
+      {
+        'match': '((:)dir)\\s*(?:(\\()(ltr|rtl)?(\\)))?'
+        'captures':
+          '1':
+            'name': 'entity.other.attribute-name.pseudo-element.stylus'
+          '2':
+            'name': 'puncutation.definition.entity.stylus'
+          '3':
+            'name': 'punctuation.definition.parameters.start.begin.stylus'
+          '4':
+            'name': 'constant.language.stylus'
+          '5':
+            'name': 'punctuation.definition.parameters.end.stylus'
+      }
+      {
+        'match': '((:)lang)\\s*(?:(\\()(\\w+(-\\w+)?)?(\\)))?'
+        'captures':
+          '1':
+            'name': 'entity.other.attribute-name.pseudo-element.stylus'
+          '2':
+            'name': 'puncutation.definition.entity.stylus'
+          '3':
+            'name': 'punctuation.definition.parameters.start.begin.stylus'
+          '4':
+            'name': 'constant.language.stylus'
+          '6':
+            'name': 'punctuation.definition.parameters.end.stylus'
+      }
+      {
+        'include': '#selector_pseudo_nth'
+      }
+      {
+        'include': '#selector_pseudo_not'
+      }
+    ]
   'selector_pseudo_nth':
     'begin': '((:)(?:nth-child|nth-last-child|nth-of-type|nth-last-of-type|nth-match|nth-last-match|nth-column|nth-last-column))\\s*(\\()'
     'beginCaptures':
@@ -505,11 +550,11 @@
       '2':
         'name': 'puncutation.definition.entity.stylus'
       '3':
-        'name': 'puncutation.parameters.definition.start.begin.stylus'
-      'end': '\\)'
-      'endCaptures':
-        '0':
-          'name': 'puncutation.definition.parameters.end.stylus'
+        'name': 'punctuation.definition.parameters.start.begin.stylus'
+    'end': '(\\))'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.parameters.end.stylus'
     'name': 'entity.other.attribute-name.pseudo-element.css'
     'patterns': [
       {
@@ -542,11 +587,11 @@
       '2':
         'name': 'puncutation.definition.entity.stylus'
       '3':
-        'name': 'puncutation.definition.parameters.start.begin.stylus'
+        'name': 'punctuation.definition.parameters.start.begin.stylus'
     'end': '\\)'
     'endCaptures':
       '0':
-        'name': 'puncutation.definition.parameters.end.stylus'
+        'name': 'punctuation.definition.parameters.end.stylus'
     'patterns': [
       {
         'include': '#selectors'
@@ -565,19 +610,10 @@
         'include': '#selector_entities'
       }
       {
-        'include': '#selector_pseudo_class'
+        'include': '#selector_pseudo'
       }
       {
         'include': '#tag_parent_reference'
-      }
-      {
-        'include': '#selector_pseudo_element'
-      }
-      {
-        'include': '#selector_pseudo_nth'
-      }
-      {
-        'include': '#selector_pseudo_not'
       }
       {
         'match': '\\$[\\w$-]+\\b'
