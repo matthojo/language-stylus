@@ -383,9 +383,6 @@
         'include': '#constant_deprecated_color'
       }
       {
-        'include': '#constant_mathematical_symbols'
-      }
-      {
         'include': '#constant_functions'
       }
     ]
