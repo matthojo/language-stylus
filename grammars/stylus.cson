@@ -29,64 +29,6 @@
   }
 ]
 'repository':
-  'general':
-    'comment': 'Grammers that should be everywhere'
-    'patterns': [
-      {
-        'include': '#comment_block'
-      }
-      {
-        'include': '#comment_line'
-      }
-    ]
-  'expression':
-    'patterns': [
-      {
-        'include': '#comment_line'
-      }
-      {
-        'include': '#comma'
-      }
-      {
-        'include': '#iteration'
-      }
-      {
-        'include': '#conditionals'
-      }
-      {
-        'include': '#logical_operators'
-      }
-      {
-        'include': '#language-keywords'
-      }
-      {
-        'include': '#hash-definition'
-      }
-      {
-        'include': '#constant_color'
-      }
-      {
-        'include': '#functions'
-      }
-      {
-        'include': '#string-quoted'
-      }
-      {
-        'include': '#escape'
-      }
-      {
-        'include': '#hash-access'
-      }
-      {
-        'include': '#language-constants'
-      }
-      {
-        'include': '#property-reference'
-      }
-      {
-        'include': '#variable'
-      }
-    ]
   'comma':
     'match': '\\s*,\\s*'
     'name': 'punctuation.delimiter.comma.stylus'
@@ -114,9 +56,17 @@
         'name': 'string.quoted.double.stylus'
       }
     ]
-  'logical_operators':
-    'match': '((?:\\?|:|!|~|\\+|-|(?:\\*)?\\*|\\/|%|(\\.)?\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|(?<!:)not)\\b)'
-    'name': 'keyword.control.operator'
+  'conditionals':
+    'begin': "(^\\s*|\\s+)(if|unless|else)(?=[\\s({]|$)\\s*"
+    'beginCaptures':
+      '2':
+        'name': 'keyword.control.stylus'
+    'end': '(?=$|\\{)'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
   'constant_color':
     'comment': 'http://www.w3.org/TR/CSS21/syndata.html#value-def-color'
     'match': '\\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white(?!-)|yellow)\\b'
@@ -188,91 +138,62 @@
   'escape':
     'match': '\\\\.'
     'name': 'constant.character.escape.stylus'
-  'mixin_function':
-    'begin': '((^|;)\\s*(\\+?\\s*[\\w$-]+)(\\()(?=.*?\\)\\s*;?\\s*$|;))'
-    'beginCaptures':
-        '3':
-          'name': 'entity.function.name.attribute-name.mixin.stylus'
-        '4':
-          'name': 'punctuation.section.function.parameters.definition.start.begin.stylus'
-    'end': '(\\))'
-    'endCaptures':
-        '1':
-          'name': 'punctuation.section.function.parameters.definition.end.stylus'
+  'expression':
     'patterns': [
       {
-        'include': '#expression'
+        'include': '#comment_line'
+      }
+      {
+        'include': '#comma'
+      }
+      {
+        'include': '#iteration'
+      }
+      {
+        'include': '#conditionals'
+      }
+      {
+        'include': '#logical_operators'
+      }
+      {
+        'include': '#language-keywords'
+      }
+      {
+        'include': '#hash-definition'
+      }
+      {
+        'include': '#constant_color'
+      }
+      {
+        'include': '#functions'
+      }
+      {
+        'include': '#string-quoted'
+      }
+      {
+        'include': '#escape'
+      }
+      {
+        'include': '#hash-access'
+      }
+      {
+        'include': '#language-constants'
+      }
+      {
+        'include': '#property-reference'
+      }
+      {
+        'include': '#variable'
       }
     ]
-    'name': 'entity.function.misc.stylus'
-  'language-keywords':
+  'general':
+    'comment': 'Grammers that should be everywhere'
     'patterns': [
       {
-        'match': '(\\b|\\s)(return|else)\\b'
-        'name': 'keyword.control.stylus'
+        'include': '#comment_block'
       }
       {
-        'match': '(\\b|\\s)(!important|in|is defined|is a)\\b'
-        'name': 'keyword.other.stylus'
-      }
-      {
-        'comment': 'Reserved variable available in all functions'
-        'match': '\\b(arguments)\\b'
-        'name': 'variable.language.stylus'
-      }
-    ]
-  'interpolation':
-    'begin': '\\{'
-    'end': '\\}'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.section.embedded.start.stylus'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.section.embedded.end.stylus'
-    'patterns': [
-      {
-        'include': '#expression'
-      }
-    ]
-    'name': 'stylus.embedded.source'
-  'language-constants':
-    'match': '\\b(true|false|null)\\b'
-    'name': 'constant.language.stylus'
-  'iteration':
-    'begin': "(^\\s*|\\s+)(for)\\s+(?=.*?\\s+in\\s+)"
-    'beginCaptures':
-      '2':
-        'name': 'keyword.control.stylus'
-    'end': '$|\\{'
-    'patterns': [
-      {
-        'include': '#expression'
-      }
-    ]
-  'conditionals':
-    'begin': "(^\\s*|\\s+)(if|unless|else)(?=[\\s({]|$)\\s*"
-    'beginCaptures':
-      '2':
-        'name': 'keyword.control.stylus'
-    'end': '(?=$|\\{)'
-    'patterns': [
-      {
-        'include': '#expression'
-      }
-    ]
-  'return':
-    'begin': "^\\s*(return)"
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.stylus'
-    'end': '(;)|(?=$)'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.terminator.statement.stylus'
-    'patterns': [
-      {
-        'include': '#expression'
+        'include': '#comment_line'
       }
     ]
   'hash-access':
@@ -335,6 +256,117 @@
       }
     ]
     'name': 'meta.hash.stylus'
+  'interpolation':
+    'begin': '\\{'
+    'end': '\\}'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.start.stylus'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.end.stylus'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+    'name': 'stylus.embedded.source'
+  'iteration':
+    'begin': "(^\\s*|\\s+)(for)\\s+(?=.*?\\s+in\\s+)"
+    'beginCaptures':
+      '2':
+        'name': 'keyword.control.stylus'
+    'end': '$|\\{'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+  'language-constants':
+    'match': '\\b(true|false|null)\\b'
+    'name': 'constant.language.stylus'
+  'language-keywords':
+    'patterns': [
+      {
+        'match': '(\\b|\\s)(return|else)\\b'
+        'name': 'keyword.control.stylus'
+      }
+      {
+        'match': '(\\b|\\s)(!important|in|is defined|is a)\\b'
+        'name': 'keyword.other.stylus'
+      }
+      {
+        'comment': 'Reserved variable available in all functions'
+        'match': '\\b(arguments)\\b'
+        'name': 'variable.language.stylus'
+      }
+    ]
+  'logical_operators':
+    'match': '((?:\\?|:|!|~|\\+|-|(?:\\*)?\\*|\\/|%|(\\.)?\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|(?<!:)not)\\b)'
+    'name': 'keyword.control.operator'
+  'mixin_function':
+    'begin': '((^|;)\\s*(\\+?\\s*[\\w$-]+)(\\()(?=.*?\\)\\s*;?\\s*$|;))'
+    'beginCaptures':
+        '3':
+          'name': 'entity.function.name.attribute-name.mixin.stylus'
+        '4':
+          'name': 'punctuation.section.function.parameters.definition.start.begin.stylus'
+    'end': '(\\))'
+    'endCaptures':
+        '1':
+          'name': 'punctuation.section.function.parameters.definition.end.stylus'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+    'name': 'entity.function.misc.stylus'
+  'property_css':
+    'begin': '(?<=^|;|{)\\s*(?=([a-zA-Z0-9_-]|(\\{(.*?)\\})|(/\\*.*?\\*/))+\\s*[:\\s]\\s*(?!(\\s*\\{))(?![^}]*?\\{[^}]*($|\\})))'
+    'end': '(?=\\}|;)|(?<!,)\\s*\\n'
+    'patterns': [
+      {
+        'include': '#comment_block'
+      }
+      {
+        'include': '#comment_line'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'begin': '(?<!^|;|{)\\s*(?:(:)|\\s)'
+        'beginCaptures':
+            '1':
+              'name': 'punctuation.separator.key-value.stylus'
+        'end': '(;)|(?=\\})|(?=(?<!\\,)\\s*\\n)'
+        'endCaptures':
+            '1':
+              'name': 'punctuation.terminator.rule.stylus'
+        'patterns': [
+          {
+            'include': '#comment_block'
+          }
+          {
+            'include': '#comment_line'
+          }
+          {
+            'include': '#property_values'
+          }
+          {
+            'include': '#expression'
+          }
+        ]
+      }
+      {
+        'match': '-(moz|o|ms|webkit|khtml)-'
+        'name': 'support.type.property-name.vendor-prefix.stylus'
+      }
+      {
+        'match': '.'
+        'name': 'support.property-name.stylus'
+      }
+    ]
   'property_list':
     'begin': '\\{'
     'beginCaptures':
@@ -407,6 +439,20 @@
       }
       {
         'include': '#constant_functions'
+      }
+    ]
+  'return':
+    'begin': "^\\s*(return)"
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.stylus'
+    'end': '(;)|(?=$)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.terminator.statement.stylus'
+    'patterns': [
+      {
+        'include': '#expression'
       }
     ]
   'rule_at':
@@ -615,52 +661,6 @@
       '0':
         'name': 'punctuation.definition.string.end.stylus'
     'name': 'string.quoted.double.stylus'
-  'property_css':
-    'begin': '(?<=^|;|{)\\s*(?=([a-zA-Z0-9_-]|(\\{(.*?)\\})|(/\\*.*?\\*/))+\\s*[:\\s]\\s*(?!(\\s*\\{))(?![^}]*?\\{[^}]*($|\\})))'
-    'end': '(?=\\}|;)|(?<!,)\\s*\\n'
-    'patterns': [
-      {
-        'include': '#comment_block'
-      }
-      {
-        'include': '#comment_line'
-      }
-      {
-        'include': '#interpolation'
-      }
-      {
-        'begin': '(?<!^|;|{)\\s*(?:(:)|\\s)'
-        'beginCaptures':
-            '1':
-              'name': 'punctuation.separator.key-value.stylus'
-        'end': '(;)|(?=\\})|(?=(?<!\\,)\\s*\\n)'
-        'endCaptures':
-            '1':
-              'name': 'punctuation.terminator.rule.stylus'
-        'patterns': [
-          {
-            'include': '#comment_block'
-          }
-          {
-            'include': '#comment_line'
-          }
-          {
-            'include': '#property_values'
-          }
-          {
-            'include': '#expression'
-          }
-        ]
-      }
-      {
-        'match': '-(moz|o|ms|webkit|khtml)-'
-        'name': 'support.type.property-name.vendor-prefix.stylus'
-      }
-      {
-        'match': '.'
-        'name': 'support.property-name.stylus'
-      }
-    ]
   'tag_parent_reference':
     'match': '\\&'
     'name': 'entity.name.tag.reference.stylus'
