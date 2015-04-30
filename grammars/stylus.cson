@@ -16,13 +16,13 @@
     'include': '#rules'
   }
   {
+    'include': '#property_values'
+  }
+  {
     'include': '#selectors_css'
   }
   {
     'include': '#property_css'
-  }
-  {
-    'include': '#property_values'
   }
   {
     'include': '#property_list'
@@ -473,37 +473,6 @@
         'include': '#rule_at'
       }
     ]
-  'selector_attribute':
-    'captures':
-      '1':
-        'name': 'punctuation.definition.entity.stylus'
-      '2':
-        'name': 'entity.other.attribute-name.attribute.stylus'
-      '3':
-        'name': 'punctuation.separator.operator.stylus'
-      '4':
-        'name': 'string.unquoted.attribute-value.stylus'
-      '5':
-        'name': 'string.quoted.double.attribute-value.stylus'
-      '6':
-        'name': 'punctuation.definition.string.begin.stylus'
-      '7':
-        'name': 'punctuation.definition.string.end.stylus'
-    'match': '(?i)(\\[)\\s*(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)(?:\\s*([~|^$*]?=)\\s*(?:(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)|((?>([\'"])(?:[^\\\\]|\\\\.)*?(\\6)))))?\\s*(\\])'
-    'name': 'meta.attribute-selector.stylus'
-    'patterns': [
-      {
-        'comment': 'Reference to parent selector including custom interpolation'
-        'match': '([\\w\\d_-]+)?(\\&)([\\w\\d_-]+)?'
-        'captures':
-          '1':
-            'name': 'entity.other.attribute-name.stylus'
-          '2':
-            'name': 'variable.language.stylus'
-          '3':
-            'name': 'entity.other.attribute-name.stylus'
-      }
-    ]
   'selector_class':
     'captures':
       '1':
@@ -513,9 +482,6 @@
   'selector_entities':
     'match': '\\b(a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|content|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|font|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp|altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern)\\b'
     'name': 'entity.name.tag.stylus'
-  'selector_custom':
-    'match': '\\b([a-zA-Z0-9]+(-[a-zA-Z0-9]+)+)(?=\\.|\\s++[^:]|\\s*[,{]|:(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child()|nth-last-child()|nth-of-type()|nth-last-of-type()|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid)(\\([0-9A-Za-z]*\\))?)'
-    'name': 'entity.name.tag.custom.stylus'
   'selector_id':
     'captures':
       '1':
@@ -599,9 +565,6 @@
         'include': '#selector_entities'
       }
       {
-        'include': '#selector_custom'
-      }
-      {
         'include': '#selector_class'
       }
       {
@@ -621,9 +584,6 @@
       }
       {
         'include': '#selector_pseudo_not'
-      }
-      {
-        'include': '#selector_attribute'
       }
     ]
   'selectors_css':
