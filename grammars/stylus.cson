@@ -115,7 +115,7 @@
       }
     ]
   'logical_operators':
-    'match': '((?:!|~|\\+|-|(?:\\*)?\\*|\\/|%|(?:\\.)\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|not)\\b)'
+    'match': '((?:\\?|:|!|~|\\+|-|(?:\\*)?\\*|\\/|%|(\\.)?\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|(?<!:)not)\\b)'
     'name': 'keyword.control.operator'
   'constant_color':
     'comment': 'http://www.w3.org/TR/CSS21/syndata.html#value-def-color'
