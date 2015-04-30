@@ -442,7 +442,7 @@
     'patterns': [
       {
         'comment': 'Reference to parent selector including custom interpolation'
-        'match': '([\\w\\d_-]+)?(&amp;)([\\w\\d_-]+)?'
+        'match': '([\\w\\d_-]+)?(\\&)([\\w\\d_-]+)?'
         'captures':
           '1':
             'name': 'entity.other.attribute-name.stylus'
@@ -482,9 +482,67 @@
         'name': 'punctuation.definition.entity.css'
     'match': '(:+)((-(moz|webkit|ms)-)?(after|before|first-letter|first-line|selection))\\b'
     'name': 'entity.other.attribute-name.pseudo-element.css'
+  'selector_pseudo_nth':
+    'begin': '((:)(?:nth-child|nth-last-child|nth-of-type|nth-last-of-type|nth-match|nth-last-match|nth-column|nth-last-column))\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      '2':
+        'name': 'puncutation.definition.entity.stylus'
+      '3':
+        'name': 'puncutation.parameters.definition.start.begin.stylus'
+      'end': '\\)'
+      'endCaptures':
+        '0':
+          'name': 'puncutation.definition.parameters.end.stylus'
+    'name': 'entity.other.attribute-name.pseudo-element.css'
+    'patterns': [
+      {
+        'include': '#logical_operators'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'match': '\\b(odd|even)\\b'
+        'name': 'constant.language.stylus'
+      }
+      {
+        'match': '\\b(\\d+)?n\\b'
+        'captures':
+          '1':
+            'name': 'constant.numeric.stylus'
+        'name': 'variable.language.stylus'
+      }
+      {
+        'match': '\\d+'
+        'name': 'constant.numeric.stylus'
+      }
+    ]
+  'selector_pseudo_not':
+    'begin': '((:)not)\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      '2':
+        'name': 'puncutation.definition.entity.stylus'
+      '3':
+        'name': 'puncutation.definition.parameters.start.begin.stylus'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'puncutation.definition.parameters.end.stylus'
+    'patterns': [
+      {
+        'include': '#selectors'
+      }
+    ]
   'selectors':
     'comment': 'Stuff for Selectors.'
     'patterns': [
+      {
+        'include': '#general'
+      }
       {
         'include': '#selector_entities'
       }
@@ -505,6 +563,12 @@
       }
       {
         'include': '#selector_pseudo_element'
+      }
+      {
+        'include': '#selector_pseudo_nth'
+      }
+      {
+        'include': '#selector_pseudo_not'
       }
       {
         'include': '#selector_attribute'
