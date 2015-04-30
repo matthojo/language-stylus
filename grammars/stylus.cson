@@ -165,6 +165,9 @@
         'include': '#constant_color'
       }
       {
+        'include': '#url'
+      }
+      {
         'include': '#functions'
       }
       {
@@ -178,6 +181,9 @@
       }
       {
         'include': '#language-constants'
+      }
+      {
+        'include': '#constant_property_value'
       }
       {
         'include': '#property-reference'
@@ -671,7 +677,7 @@
         'name': 'entity.function.name.stylus'
       '2':
         'name': 'punctuation.definition.parameters.start.begin.stylus'
-    'end': '(\))'
+    'end': '(\\))'
     'endCaptures':
       '1':
         'name': 'punctuation.definition.parameters.end.stylus'
@@ -681,6 +687,9 @@
       }
       {
         'include': '#language-constants'
+      }
+      {
+        'include': '#constant_property_value'
       }
       {
         'include': '#property-reference'
