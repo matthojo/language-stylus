@@ -60,6 +60,9 @@
         'include': '#language-keywords'
       }
       {
+        'include': '#hash-definition'
+      }
+      {
         'include': '#constant_color'
       }
       {
@@ -296,6 +299,42 @@
       }
     ]
     'name': 'meta.hash-access.stylus'
+  'hash-definition':
+    'begin': '\\{'
+    'beginCaptures':
+        '0':
+          'name': 'punctuation.section.embedded.start.stylus'
+    'end': '\\}'
+    'endCaptures':
+        '0':
+          'name': 'punctuation.section.embedded.end.stylus'
+    'patterns': [
+      {
+        'include': '#comment_line'
+      }
+      {
+        'begin': '(?:([\\w$-]+)|(\'[^\']*\')|("[^"]*"))\\s*(:)\\s*'
+        'beginCaptures':
+          '1':
+            'name': 'support.type.property-name.stylus'
+          '2':
+            'name': 'string.quoted.single.stylus'
+          '3':
+            'name': 'string.quoted.double.stylus'
+          '4':
+            'name': 'punctuation.separator.key-value.stylus'
+        'patterns':[
+          {
+            'include': '#expression'
+          }
+        ]
+        'end': '(;)|(?=\\}|$)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.terminator.statement.stylus'
+      }
+    ]
+    'name': 'meta.hash.stylus'
   'property_list':
     'begin': '\\{'
     'beginCaptures':
