@@ -83,7 +83,7 @@
     'begin': '([\\w$-]+)(\\()'
     'beginCaptures':
       '1':
-        'name': 'entity.function.name.stylus'
+        'name': 'support.function.misc.css'
       '2':
         'name': 'punctuation.section.function.definition.parameters.start.begin.stylus'
     'end': '(\\))'
@@ -193,7 +193,7 @@
       }
     ]
   'general':
-    'comment': 'Grammers that should be everywhere'
+    'comment': 'Grammars that should be everywhere'
     'patterns': [
       {
         'include': '#comment_block'
@@ -263,11 +263,13 @@
     ]
     'name': 'meta.hash.stylus'
   'interpolation':
-    'begin': '\\{'
+    'begin': '\\{([\\w]+)'
     'end': '\\}'
     'beginCaptures':
       '0':
         'name': 'punctuation.section.embedded.start.stylus'
+      '1':
+        'name': 'punctuation.definition.entity.css'
     'endCaptures':
       '0':
         'name': 'punctuation.section.embedded.end.stylus'
@@ -314,7 +316,7 @@
     'begin': '((^|;)\\s*(\\+?\\s*[\\w$-]+)(\\()(?=.*?\\)\\s*;?\\s*$|;))'
     'beginCaptures':
         '3':
-          'name': 'entity.function.name.attribute-name.mixin.stylus'
+          'name': 'support.function.misc.css'
         '4':
           'name': 'punctuation.section.function.parameters.definition.start.begin.stylus'
     'end': '(\\))'
@@ -529,11 +531,11 @@
           '2':
             'name': 'puncutation.definition.entity.stylus'
           '3':
-            'name': 'punctuation.definition.parameters.start.begin.stylus'
+            'name': 'punctuation.definition.entity.start.stylus'
           '4':
             'name': 'constant.language.stylus'
           '6':
-            'name': 'punctuation.definition.parameters.end.stylus'
+            'name': 'punctuation.definition.entity.end.stylus'
       }
       {
         'include': '#selector_pseudo_nth'
@@ -550,12 +552,11 @@
       '2':
         'name': 'puncutation.definition.entity.stylus'
       '3':
-        'name': 'punctuation.definition.parameters.start.begin.stylus'
+        'name': 'punctuation.definition.entity.start.stylus'
     'end': '(\\))'
     'endCaptures':
       '0':
-        'name': 'punctuation.definition.parameters.end.stylus'
-    'name': 'entity.other.attribute-name.pseudo-element.css'
+        'name': 'punctuation.definition.entity.end.stylus'
     'patterns': [
       {
         'include': '#logical_operators'
@@ -587,11 +588,11 @@
       '2':
         'name': 'puncutation.definition.entity.stylus'
       '3':
-        'name': 'punctuation.definition.parameters.start.begin.stylus'
+        'name': 'punctuation.definition.entity.start.stylus'
     'end': '\\)'
     'endCaptures':
       '0':
-        'name': 'punctuation.definition.parameters.end.stylus'
+        'name': 'punctuation.definition.entity.end.stylus'
     'patterns': [
       {
         'include': '#selectors'
@@ -609,7 +610,7 @@
     'patterns': [
       {
         'begin': '(?<=\\[)|(?<=\\{)'
-        'end': '(?=[|~=\\]\\s])'
+        'end': '(?=[|~\\\\*^=\\]\\s])'
         'patterns': [
           {
             'include': '#interpolation'
@@ -626,10 +627,10 @@
         'include': '#interpolation'
       }
       {
-        'match': '([|~]?=)'
+        'match': '([\\\\*^|~]?=)'
         'captures':
           '1':
-            'name': 'keyword.operator.stylus'
+            'name': 'punctuation.separator.key-value.stylus'
       }
       {
         'include': '#string-quoted'
@@ -734,13 +735,13 @@
         'name': 'punctuation.definition.string.end.stylus'
     'name': 'string.quoted.double.stylus'
   'tag_parent_reference':
-    'match': '\\&'
-    'name': 'entity.name.tag.reference.stylus'
+    'match': '[\\&>]'
+    'name': 'punctuation.separator.key-value.stylus'
   'url':
     'begin': '(url)\\s*(\\()'
     'beginCaptures':
       '1':
-        'name': 'entity.function.name.stylus'
+        'name': 'support.function.misc.css'
       '2':
         'name': 'punctuation.definition.parameters.start.begin.stylus'
     'end': '(\\))'
