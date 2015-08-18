@@ -393,6 +393,9 @@
         'include': '#rules'
       }
       {
+        'include': '#selectors'
+      }
+      {
         'include': '$self'
       }
     ]
