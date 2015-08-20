@@ -721,7 +721,7 @@
         'name': 'entity.other.attribute-name.stylus'
       }
     ]
-    'end': '\\n|$|(?=\\{\\s*\\}.*$)|(?=\\{.*?[:;])|(?=\\{)(?!.+\\}.*$)'
+    'end': '\\n|$|(?=\\{\\s*\\}.*$)|(?=\\{.*?[:;])|(?=\\{)(?!.+\\}.*$)|(?=;)'
     'name': 'meta.selector.stylus'
   'string_single':
     'begin': '\''
