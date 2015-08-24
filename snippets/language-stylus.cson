@@ -678,7 +678,7 @@
     'prefix': 'fln'
     'body': 'float none$0'
   'float right':
-    'prefix': 'fl'
+    'prefix': 'fr'
     'body': 'float right$0'
   'font-family':
     'prefix': 'ff'
