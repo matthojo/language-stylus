@@ -1,0 +1,783 @@
+'scopeName': 'source.styluscss'
+'name': 'Stylus CSS'
+'fileTypes': [
+  'styl'
+  'stylus'
+  'css.styl'
+  'css.stylus'
+]
+'foldingStartMarker': '\\{\\s*$'
+'foldingStopMarker': '^\\s*\\}'
+'patterns': [
+  {
+    'include': '#general'
+  }
+  {
+    'include': '#rules'
+  }
+  {
+    'include': '#property_values'
+  }
+  {
+    'include': '#selectors_css'
+  }
+  {
+    'include': '#property_css'
+  }
+  {
+    'include': '#property_list'
+  }
+]
+'repository':
+  'comma':
+    'match': '\\s*,\\s*'
+    'name': 'punctuation.delimiter.comma.stylus'
+  'comment_line':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.comment.stylus'
+    'match': '(?:^[ \\t]+)?(\\/\\/).*$\\n?'
+    'name': 'comment.line.stylus'
+  'comment_block':
+    'begin': '\\/\\*'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.stylus'
+    'end': '\\*\\/'
+    'name': 'comment.block.stylus'
+  'string-quoted':
+    'patterns': [
+      {
+        'match': '\'[^\']*\''
+        'name': 'string.quoted.single.stylus'
+      }
+      {
+        'match': '"[^"]*"'
+        'name': 'string.quoted.double.stylus'
+      }
+    ]
+  'conditionals':
+    'begin': "(^\\s*|\\s+)(if|unless|else)(?=[\\s({]|$)\\s*"
+    'beginCaptures':
+      '2':
+        'name': 'keyword.control.stylus'
+    'end': '(?=$|\\{)'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+  'constant_color':
+    'comment': 'http://www.w3.org/TR/CSS21/syndata.html#value-def-color'
+    'match': '(?<![\\w-])(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white(?!-)|yellow)(?![\\w-])'
+    'name': 'support.constant.color.w3c-standard-color-name.stylus'
+  'constant_deprecated_color':
+    'comment': 'These colours are mostly recognised but will not validate. ref: http://www.w3schools.com/css/css_colornames.asp'
+    'match': '(?<![\\w-])(aliceblue|antiquewhite|aquamarine|azure|beige|bisque|blanchedalmond|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkslategrey|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dimgrey|dodgerblue|firebrick|floralwhite|forestgreen|gainsboro|ghostwhite|gold|goldenrod|greenyellow|grey|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightgrey|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightslategrey|lightsteelblue|lightyellow|limegreen|linen|magenta|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|oldlace|olivedrab|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|skyblue|slateblue|slategray|slategrey|snow|springgreen|steelblue|tan|thistle|tomato|turquoise|violet|wheat|whitesmoke|yellowgreen)(?![\\w-])'
+    'name': 'invalid.deprecated.color.w3c-non-standard-color-name.stylus'
+  'constant_font':
+    'match': '((?<![\\w-])(?i:arial|century|comic|courier|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)(?![\\w-]))'
+    'name': 'support.constant.font-name.stylus'
+  'constant_functions':
+    'comment': 'Function definition (or definition when no curly braces are used)'
+    'begin': '([\\w$-]+)(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'support.function.misc.css'
+      '2':
+        'name': 'punctuation.section.function.definition.parameters.start.begin.stylus'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.function.definition.parameters.end.stylus'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+    'name': 'entity.function.stylus'
+  'constant_hex':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.stylus'
+    'match': '(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b'
+    'name': 'constant.other.color.rgb-value.stylus'
+  'constant_important':
+    'match': '\\!important'
+    'name': 'keyword.other.important.stylus'
+  'constant_number':
+    'match': '[\\+|\\-]?([0-9]+(\\.[0-9]+)?|\\.[0-9]+)'
+    'name': 'constant.numeric.stylus'
+  'constant_property_value':
+    'match': '(?<![\\w-])(absolute|all(-scroll)?|always|armenian|auto|avoid|baseline|below|bidi-override|block|bold(er)?|(border|content|padding)-box|both|bottom|break-all|break-word|capitalize|center|char|circle|cjk-ideographic|col-resize|collapse|crosshair|cursive|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fantasy|fixed|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|initial|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|left|lighter|line-edge|line-through|line|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|monospace|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|pointer|pre(-(wrap|line))?|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|(sans-)?serif|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|sub|super|sw-resize|table(-(row|cell|footer-group|header-group))?|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|zero|smaller|larger|((xx?-)?(small(er)?|large(r)?))|painted|fill|stroke)(?![\\w-])'
+    'name': 'support.constant.property-value.stylus'
+  'constant_rgb':
+    'match': '(?<!scale3d\\(|translate3d\\(|rotate3d\\()(\\b0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\\s*,\\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\\s*,\\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\\b)'
+    'name': 'constant.other.color.rgb-value.stylus'
+  'constant_rgb_percentage':
+    'match': '\\b([0-9]{1,2}|100)\\s*%,\\s*([0-9]{1,2}|100)\\s*%,\\s*([0-9]{1,2}|100)\\s*%'
+    'name': 'constant.other.color.rgb-percentage.stylus'
+  'constant_stylus_functions':
+    'patterns': [
+      {
+        'include': '#iteration'
+      }
+      {
+        'include': '#conditionals'
+      }
+      {
+        'include': '#return'
+      }
+      {
+        'include': '#mixin_function'
+      }
+    ]
+  'constant_unit':
+    'match': '(?<=[\\d])(ch|cm|deg|dpi|dpcm|dppx|em|ex|grad|in|mm|ms|pc|pt|px|rad|rem|turn|s|vh|vmin|vw)\\b|%'
+    'name': 'keyword.other.unit.stylus'
+  'escape':
+    'match': '\\\\.'
+    'name': 'constant.character.escape.stylus'
+  'expression':
+    'patterns': [
+      {
+        'include': '#constant_number'
+      }
+      {
+        'include': '#constant_unit'
+      }
+      {
+        'include': '#comment_line'
+      }
+      {
+        'include': '#comma'
+      }
+      {
+        'include': '#iteration'
+      }
+      {
+        'include': '#conditionals'
+      }
+      {
+        'include': '#logical_operators'
+      }
+      {
+        'include': '#language-keywords'
+      }
+      {
+        'include': '#hash-definition'
+      }
+      {
+        'include': '#constant_color'
+      }
+      {
+        'include': '#url'
+      }
+      {
+        'include': '#constant_functions'
+      }
+      {
+        'include': '#string-quoted'
+      }
+      {
+        'include': '#escape'
+      }
+      # {
+      #   'include': '#hash-access'
+      # }
+      {
+        'include': '#language-constants'
+      }
+      {
+        'include': '#constant_property_value'
+      }
+      {
+        'include': '#property-reference'
+      }
+      {
+        'include': '#variable'
+      }
+    ]
+  'general':
+    'comment': 'Grammars that should be everywhere'
+    'patterns': [
+      {
+        'include': '#comment_block'
+      }
+      {
+        'include': '#comment_line'
+      }
+    ]
+  'hash-access':
+    'begin': '(?=[\\w$-]+(?:\\.|\\[[^\\]=]*\\]))'
+    'end': '(?=[^\'\'""\\[]\\w.$-]|\\s|$)'
+    'patterns': [
+      {
+        'match': '\\.'
+        'name': 'punctuation.delimiter.hash.stylus'
+      }
+      {
+        'match': '\\['
+        'name': 'punctuation.definition.entity.start.stylus'
+      }
+      {
+        'match': '\\]'
+        'name': 'punctuation.definition.entity.end.stylus'
+      }
+      {
+        'include': '#string-quoted'
+      }
+      {
+        'include': '#variable'
+      }
+    ]
+    'name': 'meta.hash-access.stylus'
+  'hash-definition':
+    'begin': '\\{'
+    'beginCaptures':
+        '0':
+          'name': 'punctuation.section.embedded.start.stylus'
+    'end': '\\}'
+    'endCaptures':
+        '0':
+          'name': 'punctuation.section.embedded.end.stylus'
+    'patterns': [
+      {
+        'include': '#comment_line'
+      }
+      {
+        'begin': '(?:([\\w$-]+)|(\'[^\']*\')|("[^"]*"))\\s*(:)\\s*'
+        'beginCaptures':
+          '1':
+            'name': 'support.type.property-name.stylus'
+          '2':
+            'name': 'string.quoted.single.stylus'
+          '3':
+            'name': 'string.quoted.double.stylus'
+          '4':
+            'name': 'punctuation.separator.key-value.stylus'
+        'patterns':[
+          {
+            'include': '#expression'
+          }
+        ]
+        'end': '(;)|(?=\\}|$)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.terminator.statement.stylus'
+      }
+    ]
+    'name': 'meta.hash.stylus'
+  'interpolation':
+    'begin': '\\{([\\w]+)'
+    'end': '\\}'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.start.stylus'
+      '1':
+        'name': 'punctuation.definition.entity.css'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.end.stylus'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+    'name': 'stylus.embedded.source'
+  'iteration':
+    'begin': "(^\\s*|\\s+)(for)\\s+(?=.*?\\s+in\\s+)"
+    'beginCaptures':
+      '2':
+        'name': 'keyword.control.stylus'
+    'end': '$|\\{'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+  'language-constants':
+    'match': '\\b(true|false|null)\\b'
+    'name': 'constant.language.stylus'
+  'language-keywords':
+    'patterns': [
+      {
+        'match': '(\\b|\\s)(return|else)\\b'
+        'name': 'keyword.control.stylus'
+      }
+      {
+        'match': '(\\b|\\s)(!important|in|is defined|is a)\\b'
+        'name': 'keyword.other.stylus'
+      }
+      {
+        'comment': 'Reserved variable available in all functions'
+        'match': '\\barguments\\b'
+        'name': 'variable.language.stylus'
+      }
+    ]
+  'logical_operators':
+    'match': '((?:\\?|:|!|~|\\+|-|(?:\\*)?\\*|\\/|%|(\\.)?\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|(?<!:)not)\\b)'
+    'name': 'keyword.control.operator'
+  'mixin_function':
+    'begin': '((^|;)\\s*(\\+?\\s*[\\w$-]+)(\\()(?=.*?\\)\\s*;?\\s*$|;))'
+    'beginCaptures':
+        '3':
+          'name': 'support.function.misc.css'
+        '4':
+          'name': 'punctuation.section.function.parameters.definition.start.begin.stylus'
+    'end': '(\\))'
+    'endCaptures':
+        '1':
+          'name': 'punctuation.section.function.parameters.definition.end.stylus'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+    'name': 'entity.function.misc.stylus'
+  'property_css':
+    'begin': '(?<=^|;|{)\\s*(?=([a-zA-Z0-9_-]|(\\{(.*?)\\})|(/\\*.*?\\*/))+\\s*[:\\s]\\s*(?!(\\s*\\{))(?![^}]*?\\{[^}]*($|\\})))'
+    'end': '(?=\\}|;)|(?<!,)\\s*\\n'
+    'patterns': [
+      {
+        'include': '#comment_block'
+      }
+      {
+        'include': '#comment_line'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'begin': '(?<!^|;|{)\\s*(?:(:)|\\s)'
+        'beginCaptures':
+            '1':
+              'name': 'punctuation.separator.key-value.stylus'
+        'end': '(;)|(?=\\})|(?=(?<!\\,)\\s*\\n)'
+        'endCaptures':
+            '1':
+              'name': 'punctuation.terminator.rule.stylus'
+        'patterns': [
+          {
+            'include': '#comment_block'
+          }
+          {
+            'include': '#comment_line'
+          }
+          {
+            'include': '#property_values'
+          }
+          {
+            'include': '#expression'
+          }
+        ]
+      }
+      {
+        'match': '-(moz|o|ms|webkit|khtml)-'
+        'name': 'support.type.property-name.vendor-prefix.stylus'
+      }
+      {
+        'match': '.'
+        'name': 'support.property-name.stylus'
+      }
+    ]
+  'property_list':
+    'begin': '\\{'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.property-list.begin.stylus'
+    'captures':
+      '0':
+        'name': 'punctuation.section.property-list.stylus'
+    'end': '\\}'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.property-list.end.stylus'
+    'name': 'meta.property-list.stylus'
+    'patterns': [
+      {
+        'include': '#rules'
+      }
+      {
+        'include': '#selectors'
+      }
+      {
+        'include': '$self'
+      }
+    ]
+  'property-reference':
+    'comment': 'Reference to another property'
+    'match': '@[a-z-]+'
+    'name': 'variable.other.property.stylus'
+  'property_values':
+    'comment': 'Stuff that should only be available on values.'
+    'patterns': [
+      {
+        'include': '#string_single'
+      }
+      {
+        'include': '#string_double'
+      }
+      {
+        'include': '#escape'
+      }
+      {
+        'include': '#constant_hex'
+      }
+      {
+        'include': '#constant_rgb'
+      }
+      {
+        'include': '#constant_rgb_percentage'
+      }
+      {
+        'include': '#constant_important'
+      }
+      {
+        'include': '#constant_unit'
+      }
+      {
+        'include': '#constant_property_value'
+      }
+      {
+        'include': '#constant_number'
+      }
+      {
+        'include': '#constant_font'
+      }
+      {
+        'include': '#constant_color'
+      }
+      {
+        'include': '#constant_deprecated_color'
+      }
+      {
+        'include': '#constant_stylus_functions'
+      }
+    ]
+  'return':
+    'begin': "^\\s*(return)"
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.stylus'
+    'end': '(;)|(?=$)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.terminator.statement.stylus'
+    'patterns': [
+      {
+        'include': '#expression'
+      }
+    ]
+  'rule_at':
+    'match': '@([-\\w]+)'
+    'name': 'keyword.stylus'
+  'rules':
+    'patterns': [
+      {
+        'include': '#general'
+      }
+      {
+        'include': '#rule_at'
+      }
+    ]
+  'selector_class':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.entity.css'
+    'match': '(\\.)[a-zA-Z0-9_-]+'
+    'name': 'entity.other.attribute-name.class.css'
+  'selector_entities':
+    'match': '\\b(a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|content|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|font|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp|altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern)\\b'
+    'name': 'entity.name.tag.stylus'
+  'selector_id':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.entity.css'
+    'match': '(#)[a-zA-Z][a-zA-Z0-9_-]*'
+    'name': 'entity.other.attribute-name.id.css'
+  'selector_pseudo':
+    'patterns': [
+      {
+        'match': '(:)(active|checked|default|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|last-child|last-of-type|left|link|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|target|valid|visited)\\b'
+        'captures':
+          '1': 'name': 'puncutation.definition.entity.stylus'
+        'name': 'entity.other.attribute-name.pseudo-class.stylus'
+      }
+      {
+        'match': '(:?:)(before|after)\\b'
+        'captures':
+          '1':
+            'name': 'puncutation.definition.entity.stylus'
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      }
+      {
+        'match': '(::)(first-letter|first-number|selection)\\b'
+        'captures':
+          '1':
+            'name': 'puncutation.definition.entity.stylus'
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      }
+      {
+        'match': '((:)dir)\\s*(?:(\\()(ltr|rtl)?(\\)))?'
+        'captures':
+          '1':
+            'name': 'entity.other.attribute-name.pseudo-element.stylus'
+          '2':
+            'name': 'puncutation.definition.entity.stylus'
+          '3':
+            'name': 'punctuation.definition.parameters.start.begin.stylus'
+          '4':
+            'name': 'constant.language.stylus'
+          '5':
+            'name': 'punctuation.definition.parameters.end.stylus'
+      }
+      {
+        'match': '((:)lang)\\s*(?:(\\()(\\w+(-\\w+)?)?(\\)))?'
+        'captures':
+          '1':
+            'name': 'entity.other.attribute-name.pseudo-element.stylus'
+          '2':
+            'name': 'puncutation.definition.entity.stylus'
+          '3':
+            'name': 'punctuation.definition.entity.start.stylus'
+          '4':
+            'name': 'constant.language.stylus'
+          '6':
+            'name': 'punctuation.definition.entity.end.stylus'
+      }
+      {
+        'include': '#selector_pseudo_nth'
+      }
+      {
+        'include': '#selector_pseudo_not'
+      }
+    ]
+  'selector_pseudo_nth':
+    'begin': '((:)(?:nth-child|nth-last-child|nth-of-type|nth-last-of-type|nth-match|nth-last-match|nth-column|nth-last-column))\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      '2':
+        'name': 'puncutation.definition.entity.stylus'
+      '3':
+        'name': 'punctuation.definition.entity.start.stylus'
+    'end': '(\\))'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.entity.end.stylus'
+    'patterns': [
+      {
+        'include': '#logical_operators'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'match': '\\b(odd|even)\\b'
+        'name': 'constant.language.stylus'
+      }
+      {
+        'match': '\\b(\\d+)?n\\b'
+        'captures':
+          '1':
+            'name': 'constant.numeric.stylus'
+        'name': 'variable.language.stylus'
+      }
+      {
+        'match': '\\d+'
+        'name': 'constant.numeric.stylus'
+      }
+    ]
+  'selector_pseudo_not':
+    'begin': '((:)not)\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'entity.other.attribute-name.pseudo-element.stylus'
+      '2':
+        'name': 'puncutation.definition.entity.stylus'
+      '3':
+        'name': 'punctuation.definition.entity.start.stylus'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.entity.end.stylus'
+    'patterns': [
+      {
+        'include': '#selectors'
+      }
+    ]
+  'attribute-selector':
+    'begin': '\\[(?=[^\\]]*\\])'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.entity.start.stylus'
+    'end': '\\]'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.entity.end.stylus'
+    'patterns': [
+      {
+        'begin': '(?<=\\[)|(?<=\\{)'
+        'end': '(?=[|~\\\\*^=\\]\\s])'
+        'patterns': [
+          {
+            'include': '#interpolation'
+          }
+          {
+            'match': '.'
+            'captures':
+              '0':
+                'name': 'entity.other.attribute-name.stylus'
+          }
+        ]
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'match': '([\\\\*^|~]?=)'
+        'captures':
+          '1':
+            'name': 'punctuation.separator.key-value.stylus'
+      }
+      {
+        'include': '#string-quoted'
+      }
+      {
+        'match': '.'
+        'captures':
+          '0':
+            'name': 'string.unquoted.stylus'
+      }
+    ]
+    'name': 'meta.attribute-selector.stylus'
+  'selectors':
+    'comment': 'Stuff for Selectors.'
+    'patterns': [
+      {
+        'include': '#general'
+      }
+      {
+        'include': '#interpolation'
+      }
+      {
+        'include': '#attribute-selector'
+      }
+      {
+        'include': '#selector_entities'
+      }
+      {
+        'include': '#selector_pseudo'
+      }
+      {
+        'include': '#tag_parent_reference'
+      }
+      {
+        'match': '\\$[\\w$-]+\\b'
+        'name': 'entity.other.placeholder.stylus'
+      }
+      {
+        'match': '[:~>]'
+        'name': 'keyword.operator.selector.stylus'
+      }
+      {
+        'match': '\\b(a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|content|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|font|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp|altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern)\\b'
+        'name': 'entity.name.tag.stylus'
+      }
+      {
+        'include': '#selector_class'
+      }
+      {
+        'include': '#selector_id'
+      }
+      {
+        'match': '([\\w\\d_-]+)?(\\&)([\\w\\d_-]+)?'
+        'captures':
+          '1':
+            'name': 'entity.other.attribute-name.stylus'
+          '2':
+            'name': 'variable.language.stylus'
+          '3':
+            'name': 'entity.other.attribute-name.stylus'
+      }
+    ]
+  'selectors_css':
+    'comment': 'CSS selectors. Since we can\'t rely on curly braces or indentation, the only option here is to test whether line starts with valid selector component (id, class, tag, pseudo-element/class) unfortunately that means duplicating those regular expressions'
+    'begin': '(^|(?<=\\*/|\\}|@extend|@extends))\\s*(?=font(?!\\s*:\\s|-|.*?(?:\\/|normal|bold|light(er?)|serif|sans|monospace|\\b\\d+(?:\\b|px|r?em|%)|[\'"][^\\]]*$))|cursor(?!\\s*[:;]\\s|-|.*?(?:(?:url\\s*\\()|(?:-moz-|-webkit-|-ms-)?(?:auto|default|none|context-menu|help|pointer|progress|wait|cell|crosshair|text|vertical-text|alias|copy|move|no-drop|not-allowed|e-resize|n-resize|ne-resize|nw-resize|s-resize|se-resize|sw-resize|w-resize|ew-resize|ns-resize|nesw-resize|nwse-resize|col-resize|row-resize|all-scroll|zoom-in|zoom-out|grab|grabbingnormal|bold|light(er?)|serif|sans|monospace)))|((a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp|altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern|#HTMLelements)\\s*([\\s,.#\\[]|:[^\\s]|(?=\\{|$)))|([:~>\\[*\\/])|(\\+\\s*[\\w$-]+\\b\\s*(?!\\())|(\\d+(\\.\\d+)?%|(from|to)\\b)|(\\$[\\w$-]+\\b\\s*(?=$|\\{))|(\\.[a-zA-Z0-9_-]+)|(\\#[a-zA-Z0-9_-]+)|(([\\w\\d_-]+)?(\\&)([\\w\\d_-]+)?))'
+    'patterns': [
+      {
+        'include': '#comma'
+      }
+      {
+        'match': '\\b(\\d+(\\.\\d+)?%|from|to)\\b'
+        'name': 'entity.other.animation-keyframe.stylus'
+      }
+      {
+        'include': '#selectors'
+      }
+      {
+        'match': '.'
+        'name': 'entity.other.attribute-name.stylus'
+      }
+    ]
+    'end': '\\n|$|(?=\\{\\s*\\}.*$)|(?=\\{.*?[:;])|(?=\\{)(?!.+\\}.*$)|(?=;)'
+    'name': 'meta.selector.stylus'
+  'string_single':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.stylus'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.stylus'
+    'name': 'string.quoted.single.stylus'
+  'string_double':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.stylus'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.stylus'
+    'name': 'string.quoted.double.stylus'
+  'tag_parent_reference':
+    'match': '[\\&>]'
+    'name': 'punctuation.separator.key-value.stylus'
+  'url':
+    'begin': '(url)\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'support.function.misc.css'
+      '2':
+        'name': 'punctuation.definition.parameters.start.begin.stylus'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.parameters.end.stylus'
+    'patterns': [
+      {
+        'include': '#string-quoted'
+      }
+      {
+        'include': '#language-constants'
+      }
+      {
+        'include': '#constant_property_value'
+      }
+      {
+        'include': '#property-reference'
+      }
+      {
+        'include': '#variable'
+      }
+    ]
+    'name': 'entity.function.stylus'
+  'variable':
+    'captures':
+      '1':
+        'name': 'variable.stylus'
+    'match': '\\$[a-zA-Z_-][a-zA-Z0-9_-]*'
+    'name': 'variable.stylus'
