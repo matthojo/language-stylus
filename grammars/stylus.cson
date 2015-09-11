@@ -133,7 +133,7 @@
       }
     ]
   'constant_unit':
-    'match': '(?<=[\\d])(ch|cm|deg|dpi|dpcm|dppx|em|ex|grad|in|mm|ms|vw|vmin|vmax|vh|pc|pt|px|rad|rem|turn|s|vh|vmin|vw)\\b|%'
+    'match': '(?<=[\\d])(ch|cm|deg|dpi|dpcm|dppx|em|ex|grad|in|mm|ms|pc|pt|px|rad|rem|turn|s|vh|vmax|vmin|vw)\\b|%'
     'name': 'keyword.other.unit.stylus'
   'escape':
     'match': '\\\\.'
