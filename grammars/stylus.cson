@@ -5,6 +5,7 @@
   'stylus'
   'css.styl'
   'css.stylus'
+  'vue'
 ]
 'foldingStartMarker': '\\{\\s*$'
 'foldingStopMarker': '^\\s*\\}'
