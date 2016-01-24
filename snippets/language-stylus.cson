@@ -369,19 +369,19 @@
     'prefix': 'br'
     'body': 'border-right ${1:1}px ${2:solid} ${3:#${4:777}}$0'
   'border-spacing':
-    'prefix': 'bs'
+    'prefix': 'bsp'
     'body': 'border-spacing ${1:10}${2:px} ${3:10}${4:px}$0'
   'border-style dashed':
-    'prefix': 'bs'
+    'prefix': 'bsda'
     'body': 'border-style dashed$0'
   'border-style dotted':
-    'prefix': 'bs'
+    'prefix': 'bsdo'
     'body': 'border-style dotted$0'
   'border-style double':
-    'prefix': 'bsd'
+    'prefix': 'bsdou'
     'body': 'border-style double$0'
   'border-style groove':
-    'prefix': 'bs'
+    'prefix': 'bsg'
     'body': 'border-style groove$0'
   'border-style hidden':
     'prefix': 'bsn'
@@ -462,22 +462,22 @@
     'prefix': 'bdb'
     'body': 'box-decoration-break slice$0'
   'box-shadow inset spread':
-    'prefix': 'bs'
+    'prefix': 'bshis'
     'body': 'box-shadow ${1:0}px ${2:1}px ${3:3}px ${4:-3px} ${5:rgba(${6:0},${7:0},${8:0},${9:.5})} inset$0'
   'box-shadow inset':
-    'prefix': 'bs'
+    'prefix': 'bshi'
     'body': 'box-shadow ${1:0}px ${2:1}px ${3:3}px ${4:rgba(${5:0},${6:0},${7:0},${8:.5})} inset$0'
   'box-shadow spread':
-    'prefix': 'bs'
+    'prefix': 'bshs'
     'body': 'box-shadow ${1:0}px ${2:1}px ${3:3}px ${4:-3px} ${5:rgba(${6:0},${7:0},${8:0},${9:.5})}$0'
   'box-shadow':
-    'prefix': 'bs'
+    'prefix': 'bsh'
     'body': 'box-shadow ${1:0}px ${2:1}px ${3:3}px ${4:rgba(${5:0},${6:0},${7:0},${8:.5})}$0'
   'box-sizing border-box':
-    'prefix': 'bs'
+    'prefix': 'bszbb'
     'body': 'box-sizing border-box$0'
   'box-sizing content-box':
-    'prefix': 'bs'
+    'prefix': 'bszcb'
     'body': 'box-sizing content-box$0'
   'caption-side bottom':
     'prefix': 'cs'
