@@ -353,7 +353,7 @@
         'beginCaptures':
             '1':
               'name': 'punctuation.separator.key-value.css'
-        'end': '(;|\\n)|(?=\\})|(?=(?<!\\,)\\n)'
+        'end': '(;)|((?<!\\,)\\s*\\n)|(?=\\})'
         'endCaptures':
             '1':
               'name': 'punctuation.terminator.rule.css'
