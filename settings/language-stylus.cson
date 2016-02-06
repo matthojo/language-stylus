@@ -1,3 +1,8 @@
-'.source.stylus':
+'.source.css.stylus':
   'editor':
     'commentStart': '// '
+  'autocomplete':
+    'symbols':
+      'variable':
+        'selector': '.variable'
+        'typePriority': 2
