@@ -16,16 +16,23 @@
     'include': '#rules'
   }
   {
-    'include': '#property_values'
+    'include': '#selectors_css'
   }
   {
-    'include': '#selectors_css'
+    'include': '#property_values'
   }
   {
     'include': '#property_css'
   }
   {
     'include': '#property_list'
+  }
+  {
+    'include': '#selector_entities'
+  }
+  {
+    'match': ':'
+    'name': 'punctuation.separator.key-value.css'
   }
 ]
 'repository':
@@ -497,8 +504,20 @@
     'match': '(\\.)[a-zA-Z0-9_-]+'
     'name': 'entity.other.attribute-name.class.css'
   'selector_entities':
-    'match': '\\b(a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|content|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|font|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp|altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern)\\b'
-    'name': 'keyword.control.html.elements'
+    'patterns': [
+      {
+        'match': '\\b(a|abbr|acronym|address|applet|article|area|audio|video|b|base|big|blockquote|body|br|button|caption|canvas|center|cite|code|col|colgroup|dd|del|details|dfn|div|dl|dt|em|embed|fieldset|figure|figcaption|form|frame|frameset|(h[1-6])|head|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|main|map|mark|meta|menu|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|q|ruby|s|samp|script|select|small|span|strike|strong|style|sub|sup|summary|svg|table(?!-)|tbody|td|textarea|tfoot|th|thead|title|tr|tt|u|ul|var|header|section|footer|aside|hgroup|time)\\b'
+        'name': 'keyword.control.html.elements'
+      }
+      {
+        'match': '\\b(vkern|view|use|tspan|tref|title|textPath|text|symbol|switch|svg|style|stop|set|script|rect|radialGradient|polyline|polygon|pattern|path|mpath|missing-glyph|metadata|mask|marker|linearGradient|line|image|hkern|glyphRef|glyph|g|foreignObject|font-face-uri|font-face-src|font-face-name|font-face-format|font-face|font|filter|feTurbulence|feTile|feSpotLight|feSpecularLighting|fePointLight|feOffset|feMorphology|feMergeNode|feMerge|feImage|feGaussianBlur|feFuncR|feFuncG|feFuncB|feFuncA|feFlood|feDistantLight|feDisplacementMap|feDiffuseLighting|feConvolveMatrix|feComposite|feComponentTransfer|feColorMatrix|feBlend|ellipse|desc|defs|cursor|color-profile|clipPath|circle|animateTransform|animateMotion|animateColor|animate|altGlyphItem|altGlyphDef|altGlyph|a)\\b'
+        'name': 'keyword.control.html.svg.elements'
+      }
+      {
+        'match': '(?<!:)\\b([a-zA-Z0-9]+(-[a-zA-Z0-9]+)+)(?=\\.|\\s++[^:]|\\s*[,{]|:+(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child()|nth-last-child()|nth-of-type()|nth-last-of-type()|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid|shadow)(\\([0-9A-Za-z]*\\))?)'
+        'name': 'keyword.control.html.custom.elements'
+      }
+    ]
   'selector_id':
     'captures':
       '1':
@@ -508,7 +527,7 @@
   'selector_pseudo':
     'patterns': [
       {
-        'match': '(:)(active|checked|default|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|last-child|last-of-type|left|link|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|target|valid|visited)\\b'
+        'match': '(:)(active|checked|default|disabled|empty|enabled|extend|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|last-child|last-of-type|left|link|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|shadow|target|valid|visited)\\b'
         'captures':
           '1': 'name': 'puncutation.definition.entity.css'
         'name': 'entity.other.attribute-name.pseudo-class.css'
@@ -521,7 +540,7 @@
         'name': 'entity.other.attribute-name.pseudo-element.css'
       }
       {
-        'match': '(::)(first-letter|first-number|selection)\\b'
+        'match': '(::)(first-letter|first-line|first-number|selection)\\b'
         'captures':
           '1':
             'name': 'puncutation.definition.entity.css'
@@ -633,12 +652,6 @@
           {
             'include': '#interpolation'
           }
-          {
-            'match': '.'
-            'captures':
-              '0':
-                'name': 'entity.other.attribute-name.css'
-          }
         ]
       }
       {
@@ -691,10 +704,6 @@
         'name': 'keyword.operator.selector.css'
       }
       {
-        'match': '\\b(a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|content|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|font|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp|altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern)\\b'
-        'name': 'entity.name.tag.css'
-      }
-      {
         'include': '#selector_class'
       }
       {
@@ -724,10 +733,6 @@
       }
       {
         'include': '#selectors'
-      }
-      {
-        'match': '.'
-        'name': 'entity.other.attribute-name.css'
       }
     ]
     'end': '\\n|$|(?=\\{\\s*\\}.*$)|(?=\\{.*?[:;])|(?=\\{)(?!.+\\}.*$)|(?=;)'
