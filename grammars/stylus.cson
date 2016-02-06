@@ -16,10 +16,10 @@
     'include': '#rules'
   }
   {
-    'include': '#property_values'
+    'include': '#selectors_css'
   }
   {
-    'include': '#selectors_css'
+    'include': '#property_values'
   }
   {
     'include': '#property_css'
