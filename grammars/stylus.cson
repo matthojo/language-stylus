@@ -1,4 +1,4 @@
-'scopeName': 'source.css.less'
+'scopeName': 'source.css.stylus'
 'name': 'Stylus'
 'fileTypes': [
   'styl'
