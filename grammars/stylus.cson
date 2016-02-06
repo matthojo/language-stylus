@@ -182,9 +182,9 @@
       {
         'include': '#escape'
       }
-      # {
-      #   'include': '#hash-access'
-      # }
+      {
+        'include': '#hash-access'
+      }
       {
         'include': '#language-constants'
       }
@@ -210,7 +210,7 @@
     ]
   'hash-access':
     'begin': '(?=[\\w$-]+(?:\\.|\\[[^\\]=]*\\]))'
-    'end': '(?=[^\'\'""\\[]\\w.$-]|\\s|$)'
+    'end': '(?=[^\'\'""\\[\\]\\w.$-]|\\s|$)'
     'patterns': [
       {
         'match': '\\.'
@@ -246,7 +246,7 @@
         'include': '#comment_line'
       }
       {
-        'begin': '(?:([\\w$-]+)|(\'[^\']*\')|("[^"]*"))\\s*(:)\\s*'
+        'begin': '(?x)(?:([\\w$-]+)|(\'[^\']*\')|("[^"]*"))\\s*(:)\\s*'
         'beginCaptures':
           '1':
             'name': 'support.type.property-name.css'
@@ -353,7 +353,7 @@
         'beginCaptures':
             '1':
               'name': 'punctuation.separator.key-value.css'
-        'end': '(;|\\n)|(?=\\})|(?=(?<!\\,)\\n)'
+        'end': '(;|\\n)|(?=\\})|(?=(?<!\\,)\\s*\\n)'
         'endCaptures':
             '1':
               'name': 'punctuation.terminator.rule.css'
