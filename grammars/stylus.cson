@@ -100,7 +100,7 @@
     'captures':
       '1':
         'name': 'punctuation.definition.constant.css'
-    'match': '(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b'
+    'match': '(\\#)(?:([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])?|([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})?)\\b'
     'name': 'constant.other.color.rgb-value.css'
   'constant_important':
     'match': '\\!important'
