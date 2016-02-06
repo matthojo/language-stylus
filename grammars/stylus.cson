@@ -517,8 +517,7 @@
         'name': 'keyword.control.html.svg.elements'
       }
       {
-        'match': '(?<!:)\\b([a-zA-Z0-9]+(-[a-zA-Z0-9]+)+)(?=\\.|\\s+[^:]|\\s*[,{]|:+(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child\\(\\)|nth-last-child\\(\\)|nth-of-type\\(\\)|nth-last-of-type\\(\\)|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid|shadow)(\\([0-9A-Za-z]*\\))?)'
-        'name': 'keyword.control.html.custom.elements'
+        'include': '#selector_pseudo'
       }
     ]
   'selector_id':
