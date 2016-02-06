@@ -1,0 +1,261 @@
+/**
+ * This file is compiled based on offical documentation at
+ * http://learnboost.github.io/stylus/ to test highlighting
+ * Original: https://raw.githubusercontent.com/billymoon/Stylus/master/highlight-test.stylus
+ */
+
+// @at-rules
+@import "test.css";
+@charset "utf-8";
+@font-face {
+    font-family: Ubuntu, sans-serif;
+    src: url('fonts/pompadur.ttf');
+}
+
+// animation
+@keyframes myfirst {
+  from {
+    background: red;
+  }
+  50% {
+    background red
+  }
+  to {
+    background: yellow;
+  }
+}
+
+// media query
+@media screen and (max-width: 500px) {
+  a {
+    color: #fff;
+  }
+}
+
+// one-line code
+a { color: red; top: 0; } b { color: #fff; } i { color: #fff; }
+
+// Colors
+body {
+  color: #fff;
+  color: #ffffff;
+  color: #fff4;
+  color: #ffffff44;
+  color: rgb(100%, 100%, 50%);
+  color: rgb(23, 23, 23);
+  color: rgba(23, 23, 23, 0.4);
+  color: hsl(23, 23, 23);
+  color: hsla(23, 23, 23, 0.4);
+}
+
+// Properties
+a {
+  top: 0
+  top:0
+  top :0
+  top 0
+
+  // tabs instead of spaces as delimiters
+  -webkit-transition	:	arguments
+  -moz-transition	arguments
+
+  // multiline property, comma separated
+  box-shadow: 0 1px 1px #fff,
+              0 0 4px rgba(0,0,0,0.4)
+
+  // multiline function call
+  background-image: linear-gradient(
+    top,
+    #fff,
+    #ccc
+  )
+}
+
+// pseudo-elements and selectors
+a:nth-child(2n+1):not(:dir(rtl))::after:lang(fsd):active {
+  color: red;
+}
+
+// Literal css
+@css {
+  a {
+    color: #fff;
+  }
+}
+
+// Universal selector
+*, *.test, *#test
+  color: white
+
+// tag attributes selectors
+[a=bb], [a~=bb], [a|=bb], [a="bb"], [a='bb'],
+[{x}a{x}sd{x}=sdf], [a={x}s{x}df{x}]
+  color: red
+
+// Escaping
+body
+  top 10 \+ 5
+
+// Multiple selectors separated by line break
+html,
+body
+  font
+    color red
+  // vendor prefix
+  -webkit-background-clip: border-box
+
+  // ending in interpolation
+  h1{s} {
+    text-decoration: none;
+  }
+  // no space before braces
+  h2{
+    color black
+  }
+
+// Selectors start with a symbol
+div
+  :before
+  ::before
+  ~ div
+  + div
+  > div
+  [href^="#"]
+  / div
+  *
+    background-color: red
+
+// Compound selectors
+body.someclass#someid
+  font normal 18px/30px OpenSans, Verdana, sans-serif
+
+// Multiple selectors separated by comma
+textarea, input
+  border 1px solid #fff
+
+// Multiple properties separated by line
+font .a32
+  font-family font1
+  font-size base-font-size
+  font normal
+  font bold
+  font lighter
+  font monospace
+  font 400
+  font 1.2em
+  font "Verdana"
+  font normal 18px/30px OpenSans, Verdana, sans-serif
+  left 15px
+
+// Multiple properties separated by semicolon
+header
+  font-size 10px; left 15px;
+
+// Ambigious property / selector
+// when with comma should be recognized as a selector
+header body,
+header
+  top 0
+
+// Parent reference, including BEM-style expansion
+.block
+  &
+    top 0
+  &:hover
+    top 0
+  &.test
+    top 0
+    &_modifier
+      top 0
+  &#test
+    top 0
+  header&
+    top 0
+  footer &
+    top 0
+
+// Variable assignments
+i = '' // test comment
+n ?= 5
+test := 5
+
+// Hashes
+hash = {
+  somekey: true
+  // commented: true
+  'escaped key 1' : 'value'
+  "escaped key 2" : 'value'
+}
+hashOneLine = { somekey: true }
+hashEmpty = {}
+hash['key'] = 'value'
+hash['other'] = hash['key']
+hash.somekey = false
+hash.nested = { somekey: false }
+hash.nested.somekey = true
+hash['nested'].somekey = true
+hash.nested['somekey'] = true
+
+// making sure this isn't considered an assignment
+input[type=text] {
+  &:focus {
+    text-align: center;
+  }
+}
+
+// Complex case of a property
+a
+  /* */fo{i}nt-family{n+1}fsd #ccc  sdfs // 213px
+
+// Function definition and control structures
+somefunction(a, b = 16px, c = b, d...)
+  if c
+    top b
+  else
+    return a
+  for x, y in somedictionary
+    &_{x}_{y}
+      color x if y
+
+// simple function (mixin) definition
+somemixin()
+  color red
+
+// usage of a function (mixin) and value in braces
+a
+  somemixin()
+  margin-bottom (2px / 1)
+
+// built-in functions
+.foo
+  test = 5
+  jpg = "png"
+  background-image url(../test.jpg) // will yeild url("../5.png")
+  background-image url("../test.jpg")
+
+// block mixin
+bar()
+  {block}
+
+body
+  +bar()
+    width: 100%;
+
+// Placeholder selectors
+$foo
+  color red
+
+// Extending
+.bar
+  @extend $foo
+  background: #000
+
+// Special treatment for cursor
+.bar
+  cursor: pointer
+.bar
+  cursor: pointer
+.bar
+  cursor   :   pointer
+.bar
+  cursor url('zoom.cur')
