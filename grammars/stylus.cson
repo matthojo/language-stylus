@@ -747,8 +747,7 @@
         'include': '#tag_parent_reference'
       }
       {
-        'match': '\\$[\\w$-]+\\b'
-        'name': 'entity.other.placeholder.css'
+        'include': '#variable'
       }
       {
         'match': '[:~>]'
