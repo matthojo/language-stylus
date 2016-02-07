@@ -13,26 +13,58 @@
     'include': '#general'
   }
   {
-    'include': '#rules'
+    'include': '#at_rules'
   }
   {
-    'include': '#selectors_css'
+    'include': '#media'
   }
   {
-    'include': '#property_values'
+    'include': 'iteration'
   }
   {
-    'include': '#property_css'
+    'include': 'conditionals'
+  }
+  {
+    'include': '#return'
+  }
+  {
+    'include': '#mixin_function'
   }
   {
     'include': '#property_list'
   }
   {
-    'include': '#selector_entities'
+    'include': '#property_values'
   }
   {
-    'match': ':'
-    'name': 'punctuation.separator.key-value.css'
+    'include': '#selectors_css'
+  }
+  {
+    'begin': '@extends?\\s'
+    'beginCaptures':
+      '0':
+        'name': 'keyword.language.stylus'
+      'patterns': [
+        {
+          'include': '#selectors'
+        }
+      ]
+    'end': '(?=$|;)'
+  }
+  {
+    'include': '#escape'
+  }
+  {
+    'include': '#language-constants'
+  }
+  {
+    'include': '#logical_operators'
+  }
+  {
+    'include': '#language-keywords'
+  }
+  {
+    'include': '#property-reference'
   }
   {
     'include': '#variable'
@@ -151,12 +183,6 @@
   'expression':
     'patterns': [
       {
-        'include': '#constant_number'
-      }
-      {
-        'include': '#constant_unit'
-      }
-      {
         'include': '#comment_line'
       }
       {
@@ -182,9 +208,6 @@
       }
       {
         'include': '#url'
-      }
-      {
-        'include': '#constant_functions'
       }
       {
         'include': '#string-quoted'
@@ -345,60 +368,6 @@
       }
     ]
     'name': 'entity.function.misc.css'
-  'property_css':
-    'begin': '(?<=^|;|{)\\s*(?=([a-zA-Z0-9_-]|(\\{(.*?)\\})|(/\\*.*?\\*/))+\\s*[:\\s]\\s*(?!(\\s*\\{))(?![^}]*?\\{[^}]*($|\\})))'
-    'end': '(?=\\}|;)|(?<!,)\\s*\\n'
-    'patterns': [
-      {
-        'include': '#comment_block'
-      }
-      {
-        'include': '#comment_line'
-      }
-      {
-        'include': '#interpolation'
-      }
-      {
-        'begin': '(?<!^|;|{)\\s*(?:(:)|\\s)'
-        'beginCaptures':
-            '1':
-              'name': 'punctuation.separator.key-value.css'
-        'end': '(;)|((?<!\\,)\\s*\\n)|(?=\\})'
-        'endCaptures':
-            '1':
-              'name': 'punctuation.terminator.rule.css'
-        'name': 'meta.property-value.css'
-        'patterns': [
-          {
-            'include': '#comment_block'
-          }
-          {
-            'include': '#comment_line'
-          }
-          {
-            'include': '#property_values'
-          }
-          {
-            'include': '#expression'
-          }
-          {
-            'include': '$self'
-          }
-        ]
-      }
-      {
-        'match': '-(moz|o|ms|webkit|khtml)-'
-        'name': 'support.type.property-name.vendor-prefix.css'
-      }
-      {
-        'name': 'support.type.property-name.css'
-        'match': '(?<![-a-z])(-webkit-[-A-Za-z]+|-moz-[-A-Za-z]+|-o-[-A-Za-z]+|-ms-[-A-Za-z]+|-khtml-[-A-Za-z]+|zoom|z-index|y|x|wrap|word-wrap|word-spacing|word-break|word|width|widows|white-space-collapse|white-space|white|weight|volume|voice-volume|voice-stress|voice-rate|voice-pitch-range|voice-pitch|voice-family|voice-duration|voice-balance|voice|visibility|vertical-align|variant|user-select|up|unicode-bidi|unicode-range|unicode|trim|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform|touch-action|top-width|top-style|top-right-radius|top-left-radius|top-color|top|timing-function|text-wrap|text-transform|text-shadow|text-replace|text-rendering|text-overflow|text-outline|text-justify|text-indent|text-height|text-emphasis|text-decoration|text-align-last|text-align|text|target-position|target-new|target-name|target|table-layout|tab-size|style-type|style-position|style-image|style|string-set|stretch|stress|stacking-strategy|stacking-shift|stacking-ruby|stacking|src|speed|speech-rate|speech|speak-punctuation|speak-numeral|speak-header|speak|span|spacing|space-collapse|space|sizing|size-adjust|size|shadow|respond-to|rule-width|rule-style|rule-color|rule|ruby-span|ruby-position|ruby-overhang|ruby-align|ruby|rows|rotation-point|rotation|role|right-width|right-style|right-color|right|richness|rest-before|rest-after|rest|resource|resize|reset|replace|repeat|rendering-intent|rate|radius|quotes|punctuation-trim|punctuation|property|profile|presentation-level|presentation|position|pointer-events|point|play-state|play-during|play-count|pitch-range|pitch|phonemes|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pack|overhang|overflow-y|overflow-x|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|origin|orientation|orient|ordinal-group|order|opacity|offset|numeral|new|nav-up|nav-right|nav-left|nav-index|nav-down|nav|name|move-to|model|mix-blend-mode|min-width|min-height|min|max-width|max-height|max|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marquee|marks|mark-before|mark-after|mark|margin-top|margin-right|margin-left|margin-bottom|margin|mask-image|list-style-type|list-style-position|list-style-image|list-style|list|lines|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-height|line-break|level|letter-spacing|length|left-width|left-style|left-color|left|label|justify-content|justify|iteration-count|inline-box-align|initial-value|initial-size|initial-before-align|initial-before-adjust|initial-after-align|initial-after-adjust|index|indent|increment|image-resolution|image-orientation|image|icon|hyphens|hyphenate-resource|hyphenate-lines|hyphenate-character|hyphenate-before|hyphenate-after|hyphenate|height|header|hanging-punctuation|grid-rows|grid-columns|grid|gap|font-kerning|font-language-override|font-weight|font-variant-caps|font-variant|font-style|font-synthesis|font-stretch|font-size-adjust|font-size|font-family|font|float-offset|float|flex-wrap|flex-shrink|flex-grow|flex-group|flex-flow|flex-direction|flex-basis|flex|fit-position|fit|fill|filter|family|empty-cells|emphasis|elevation|duration|drop-initial-value|drop-initial-size|drop-initial-before-align|drop-initial-before-adjust|drop-initial-after-align|drop-initial-after-adjust|drop|down|dominant-baseline|display-role|display-model|display|direction|delay|decoration-break|decoration|cursor|cue-before|cue-after|cue|crop|counter-reset|counter-increment|counter|count|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|column-break-before|column-break-after|column|color-profile|color|collapse|clip|clear|character|caption-side|break-inside|break-before|break-after|break|box-sizing|box-shadow|box-pack|box-orient|box-ordinal-group|box-lines|box-flex-group|box-flex|box-direction|box-decoration-break|box-align|box|bottom-width|bottom-style|bottom-right-radius|bottom-left-radius|bottom-color|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-length|border-left-width|border-left-style|border-left-color|border-left|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-target|bookmark-level|bookmark-label|bookmark|binding|bidi|before|baseline-shift|baseline|balance|background-blend-mode|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-break|background-attachment|background|azimuth|attachment|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-duration|animation-direction|animation-delay|animation-fill-mode|animation|alignment-baseline|alignment-adjust|alignment|align-self|align-last|align-items|align-content|align|after|adjust|will-change)(?=\\s*:?(.*\\\()|(?!.*(?<!@){))\\b'
-      }
-      {
-        'name': 'support.type.property-name.svg.css'
-        'match': '(?<![-a-z])(writing-mode|text-anchor|stroke-width|stroke-opacity|stroke-miterlimit|stroke-linejoin|stroke-linecap|stroke-dashoffset|stroke-dasharray|stroke|stop-opacity|stop-color|shape-rendering|marker-start|marker-mid|marker-end|lighting-color|kerning|image-rendering|glyph-orientation-vertical|glyph-orientation-horizontal|flood-opacity|flood-color|fill-rule|fill-opacity|fill|enable-background|color-rendering|color-interpolation-filters|color-interpolation|clip-rule|clip-path)(?=\\s*:)'
-      }
-    ]
   'property_list':
     'begin': '\\{'
     'beginCaptures':
@@ -414,10 +383,13 @@
     'name': 'meta.property-list.css'
     'patterns': [
       {
-        'include': '#rules'
+        'include': '#at_rules'
       }
       {
         'include': '#selectors'
+      }
+      {
+        'include': '#expressions'
       }
       {
         'include': '$self'
@@ -488,18 +460,32 @@
         'include': '#expression'
       }
     ]
-  'rule_at':
-    'match': '@([-\\w]+)'
-    'name': 'keyword.css'
-  'rules':
+  'at_rules':
+    'begin': '^\\s*(@(?:import|charset|css|font-face|(?:-webkit-)?keyframes)(?:\\s+([\\w-]+))?)\\b'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.at-rule.other.css'
+      '2':
+        'name': 'variable.other.animation-name.css'
+    'end':  '$|;|(?=\\{)'
     'patterns': [
       {
-        'include': '#general'
+        'include': '#string_single'
       }
       {
-        'include': '#rule_at'
+        'include': '#string_double'
       }
     ]
+  'media':
+    'begin': '^\\s*(@media)\\s*'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.at-rule.media.css'
+    'patterns':
+      {
+        'include': '#media-query'
+      }
+    'end': '$|(?=\\{)'
   'selector_class':
     'captures':
       '1':
@@ -509,12 +495,12 @@
   'selector_entities':
     'patterns': [
       {
-        'match': '\\b(a|abbr|acronym|address|applet|article|area|audio|video|b|base|big|blockquote|body|br|button|caption|canvas|center|cite|code|col|colgroup|dd|del|details|dfn|div|dl|dt|em|embed|fieldset|figure|figcaption|form|frame|frameset|(h[1-6])|head|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|main|map|mark|meta|menu|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|q|ruby|s|samp|script|select|small|span|strike|strong|style|sub|sup|summary|svg|table(?!-)|tbody|td|textarea|tfoot|th|thead|title|tr|tt|u|ul|var|header|section|footer|aside|hgroup|time)\\b'
-        'name': 'keyword.control.html.elements'
-      }
-      {
         'match': '\\b(vkern|view|use|tspan|tref|title|textPath|text|symbol|switch|svg|style|stop|set|script|rect|radialGradient|polyline|polygon|pattern|path|mpath|missing-glyph|metadata|mask|marker|linearGradient|line|image|hkern|glyphRef|glyph|g|foreignObject|font-face-uri|font-face-src|font-face-name|font-face-format|font-face|font|filter|feTurbulence|feTile|feSpotLight|feSpecularLighting|fePointLight|feOffset|feMorphology|feMergeNode|feMerge|feImage|feGaussianBlur|feFuncR|feFuncG|feFuncB|feFuncA|feFlood|feDistantLight|feDisplacementMap|feDiffuseLighting|feConvolveMatrix|feComposite|feComponentTransfer|feColorMatrix|feBlend|ellipse|desc|defs|cursor|color-profile|clipPath|circle|animateTransform|animateMotion|animateColor|animate|altGlyphItem|altGlyphDef|altGlyph|a)\\b'
         'name': 'keyword.control.html.svg.elements'
+      }
+      {
+        'match': '\\b(a|abbr|acronym|address|applet|article|area|audio|video|b|base|big|blockquote|body|br|button|caption|canvas|center|cite|code|col|colgroup|dd|del|details|dfn|div|dl|dt|em|embed|fieldset|figure|figcaption|form|frame|frameset|(h[1-6])|head|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|main|map|mark|meta|menu|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|q|ruby|s|samp|script|select|small|span|strike|strong|style|sub|sup|summary|svg|table(?!-)|tbody|td|textarea|tfoot|th|thead|title|tr|tt|u|ul|var|header|section|footer|aside|hgroup|time)\\b'
+        'name': 'keyword.control.html.elements'
       }
       {
         'include': '#selector_pseudo'
@@ -583,6 +569,72 @@
         'include': '#selector_pseudo_not'
       }
     ]
+  'media-query-properties':
+      'patterns': [
+        {
+          'match': '\\s*:\\s*'
+          'captures':
+            '0':
+              'name': 'punctuation.separator.key-value.css'
+        }
+        {
+          'match': '(?x)(((min|max)-)?(((device-)?(height|width|aspect-ratio))|(color(-index)?)|monochrome|resolution))|grid|scan|orientation'
+          'captures':
+            '0':
+              'name': 'support.type.property-name.media.css'
+        }
+        {
+          'match': '\\b(portrait|landscape|progressive|interlace)\\b'
+          'captures':
+            '1':
+              'name': 'support.constant.property-value.css'
+        }
+      ]
+  'media-query-list':
+    'begin': '\\s*(and)?\\s*(\\()\\s*'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.operator.logic.media.css'
+      '2':
+        'name': 'punctuation.definition.parameters.start.css'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.parameters.end.css'
+    'patterns': [
+      {
+        'include': '#media-query-properties'
+      }
+      {
+        'match': '\\d+'
+        'name': 'constant.numeric.css'
+      }
+    ]
+  'media-query':
+    'patterns':
+      'begin': '\\s*(?![{;]|$)'
+      'end': '\\s*(?=[{;]|$)'
+      'patterns': [
+          {
+            'begin': '(?i)\\s*(only|not)?\\s*(all|aural|braille|embossed|handheld|print|projection|screen|tty|tv)?(?![\\w\\d$-]+)'
+            'beginCaptures':
+              '1':
+                'name': 'keyword.operator.logic.media.css'
+              '2':
+                'name': 'support.constant.media.css'
+            'end': '\\s*(?:(,)|(?=[{;]|$))'
+            'patterns':
+              [
+                {
+                  'include': '#media-query-list'
+                }
+              ]
+          }
+          {
+            'include': '#variable'
+          }
+      ]
+      'name': 'meta.at-rule.media.css'
   'selector_pseudo_nth':
     'begin': '((:)(?:nth-child|nth-last-child|nth-of-type|nth-last-of-type|nth-match|nth-last-match|nth-column|nth-last-column))\\s*(\\()'
     'beginCaptures':
@@ -689,9 +741,6 @@
         'include': '#attribute-selector'
       }
       {
-        'include': '#selector_entities'
-      }
-      {
         'include': '#selector_pseudo'
       }
       {
@@ -704,6 +753,9 @@
       {
         'match': '[:~>]'
         'name': 'keyword.operator.selector.css'
+      }
+      {
+        'include': '#selector_entities'
       }
       {
         'include': '#selector_class'
@@ -724,21 +776,25 @@
     ]
   'selectors_css':
     'comment': 'CSS selectors. Since we can\'t rely on curly braces or indentation, the only option here is to test whether line starts with valid selector component (id, class, tag, pseudo-element/class) unfortunately that means duplicating those regular expressions'
-    'begin': '(^|(?<=\\*/|\\}|@extend|@extends))\\s*(?=font(?!\\s*:\\s|-|.*?(?:\\/|normal|bold|light(er?)|serif|sans|monospace|\\b\\d+(?:\\b|px|r?em|%)|[\'"][^\\]]*$))|cursor(?!\\s*[:;]\\s|-|.*?(?:(?:url\\s*\\()|(?:-moz-|-webkit-|-ms-)?(?:auto|default|none|context-menu|help|pointer|progress|wait|cell|crosshair|text|vertical-text|alias|copy|move|no-drop|not-allowed|e-resize|n-resize|ne-resize|nw-resize|s-resize|se-resize|sw-resize|w-resize|ew-resize|ns-resize|nesw-resize|nwse-resize|col-resize|row-resize|all-scroll|zoom-in|zoom-out|grab|grabbingnormal|bold|light(er?)|serif|sans|monospace)))|((a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp|altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern|#HTMLelements)\\s*([\\s,.#\\[]|:[^\\s]|(?=\\{|$)))|([:~>\\[*\\/])|(\\+\\s*[\\w$-]+\\b\\s*(?!\\())|(\\d+(\\.\\d+)?%|(from|to)\\b)|(\\$[\\w$-]+\\b\\s*(?=$|\\{))|(\\.[a-zA-Z0-9_-]+)|(\\#[a-zA-Z0-9_-]+)|(([\\w\\d_-]+)?(\\&)([\\w\\d_-]+)?))'
+    'begin': '(?x)(^|(?<=\\*/|\\}))\\s*(?=font(?!\\s*:\\s|-|.*?(?:\\/|normal|bold|light(er?)|serif|sans|monospace|\\b\\d+(?:\\b|px|r?em|%)|[\'\"][^\\]]*$))|cursor(?!\\s*[:;]\\s|-|.*?(?:(?:url\\s*\\()|(?:-moz-|-webkit-|-ms-)?(?:auto|default|none|context-menu|help|pointer|progress|wait|cell|crosshair|text|vertical-text|alias|copy|move|no-drop|not-allowed|e-resize|n-resize|ne-resize|nw-resize|s-resize|se-resize|sw-resize|w-resize|ew-resize|ns-resize|nesw-resize|nwse-resize|col-resize|row-resize|all-scroll|zoom-in|zoom-out|grab|grabbingnormal|bold|light(er?)|serif|sans|monospace)))|((altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform|circle|clipPath|color-profile|defs|desc|ellipse|feBlend|feColorMatrix|feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap|feDistantLight|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur|feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting|feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name|font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hkern|image|line|linearGradient|marker|mask|metadata|missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern|a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp)\\s*([\\s,.#\\[]|:[^\\s]|(?=\\{|$)))|([:~&gt;\\[*\\/])|(\\+\\s*[\\w$-]+\\b\\s*(?!\\())|(\\d+(\\.\\d+)?%|(from|to)\\b)|(\\$[\\w$-]+\\b\\s*(?=$|\\{))|(\\.[a-zA-Z0-9_-]+)|(\\#[a-zA-Z0-9_-]+)|(([\\w\\d_-]+)?(&amp;)([\\w\\d_-]+)?))'
     'patterns': [
       {
         'include': '#comma'
       }
       {
-        'match': '\\b(\\d+(\\.\\d+)?%|from|to)\\b'
+        'match': '\\d+(\\.\\d+)?%|from\\b|to\\b'
         'name': 'entity.other.animation-keyframe.css'
       }
       {
         'include': '#selectors'
       }
+      {
+        'match': '.'
+        'name': 'entity.other.attribute-name.stylus'
+      }
     ]
-    'end': '\\n|$|(?=\\{\\s*\\}.*$)|(?=\\{.*?[:;])|(?=\\{)(?!.+\\}.*$)|(?=;)'
-    # 'name': 'meta.selector.css'
+    'end': '\\n|$|(?=\\{\\s*\\}.*$)|(?=\\{.*?[:;])|(?=\\{)(?!.+\\}.*$)'
+    'name': 'meta.selector.css'
   'string_single':
     'begin': '\''
     'beginCaptures':
