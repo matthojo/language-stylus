@@ -10,7 +10,7 @@
 'foldingStopMarker': '^\\s*\\}'
 'patterns': [
   {
-    'include': '#general'
+    'include': '#comments'
   }
   {
     'include': '#at_rules'
@@ -19,10 +19,10 @@
     'include': '#media'
   }
   {
-    'include': 'iteration'
+    'include': '#iteration'
   }
   {
-    'include': 'conditionals'
+    'include': '#conditionals'
   }
   {
     'include': '#return'
@@ -231,7 +231,7 @@
         'include': '#variable'
       }
     ]
-  'general':
+  'comments':
     'comment': 'Grammars that should be everywhere'
     'patterns': [
       {
@@ -732,7 +732,7 @@
     'comment': 'Stuff for Selectors.'
     'patterns': [
       {
-        'include': '#general'
+        'include': '#comments'
       }
       {
         'include': '#interpolation'
@@ -747,14 +747,12 @@
         'include': '#tag_parent_reference'
       }
       {
-        'include': '#variable'
-      }
-      {
         'match': '[:~>]'
         'name': 'keyword.operator.selector.css'
       }
       {
-        'include': '#selector_entities'
+        'match': '\\b(a|abbr|acronym|address|applet|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|content|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|xmp)\\b'
+        'name': 'entity.name.tag.css'
       }
       {
         'include': '#selector_class'
@@ -771,6 +769,9 @@
             'name': 'variable.language.css'
           '3':
             'name': 'entity.other.attribute-name.css'
+      }
+      {
+        'include': '#variable'
       }
     ]
   'selectors_css':
