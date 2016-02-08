@@ -17,6 +17,9 @@
     'include': '#selector'
   }
   {
+    'include': '#variable_declaration'
+  }
+  {
     'include': '#declaration'
   }
   {
@@ -241,6 +244,19 @@
         'name': 'meta.attribute-selector.css'
       }
     ]
+  'variable_declaration':
+    'begin': '(\\$[a-zA-Z_-][a-zA-Z0-9_-]*)[^\\S\\n]*(\\=|\\?\\=|\\:\\=)'
+    'beginCaptures':
+      '1': 'name': 'variable.stylus'
+      '2': 'name': 'keyword.operator.stylus'
+    'end': '(\\n)|(;)|(?=\\})'
+    'endCaptures':
+      '2': 'name': 'punctuation.terminator.rule.css'
+    'patterns': [
+      {
+        'include': '#property_values'
+      }
+    ]
   'declaration':
     'begin': '((?<=^)[^\\S\\n]+)|((?<=;)[^\\S\\n]*)|((?<=\\{)[^\\S\\n]*)'
     'end': '(\\n)|(;)|(?=\\})'
@@ -361,6 +377,9 @@
       }
       {
         'include': '#stylus_keywords'
+      }
+      {
+        'include': '#variable'
       }
     ]
   'numeric':
@@ -541,7 +560,7 @@
     ]
   'operator':
     'match': '((?:\\?|:|!|~|\\+|(\\s-\\s)|(?:\\*)?\\*|\\/|%|(\\.)?\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|(?<!:)not|or|and)\\b)'
-    'name': 'keyword.control.operator'
+    'name': 'keyword.operator.stylus'
   'font_name':
     'match': '(\\b(?i:arial|century|comic|courier|cursive|fantasy|futura|garamond|georgia|helvetica|impact|lucida|monospace|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif)\\b)'
     'name': 'support.constant.font-name.css'
@@ -563,6 +582,9 @@
         'name': 'variable.language.stylus'
       }
     ]
+  'variable':
+    'match': '(\\$[a-zA-Z_-][a-zA-Z0-9_-]*)'
+    'name': 'variable.stylus'
   'function':
     'begin': '(?=[a-zA-Z_-][a-zA-Z0-9_-]*\\()'
     'end': '(\\))'
