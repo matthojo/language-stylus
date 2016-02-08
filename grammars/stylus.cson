@@ -289,7 +289,9 @@
       '1': 'name': 'support.type.property-name.css'
       '2': 'name': 'support.type.property-name.svg.css'
       '3': 'name': 'support.function.mixin.stylus'
-    'end': '(?=\\n|;|\\}|$)'
+    'end': '(;)|(?=\\n|\\}|$)'
+    'endCaptures':
+      '1': 'name': 'punctuation.terminator.rule.css'
     'name': 'meta.property.css'
     'patterns': [
       {
@@ -300,9 +302,7 @@
     'begin': '\\G\\s*(?:(:)|(\\s))\\s*(?!&)'
     'beginCaptures':
       '1': 'name': 'punctuation.separator.key-value.css'
-    'end': '(;)|(?=\\n|\\}|$)'
-    'endCaptures':
-      '1': 'name': 'punctuation.terminator.rule.css'
+    'end': '(?=\\n|;|\\}|$)'
     'name': 'meta.property-value.css'
     'patterns': [
       {
