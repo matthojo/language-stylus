@@ -1,6 +1,29 @@
 '.source.css.stylus':
   'editor':
     'commentStart': '// '
+    'autoIndentOnPaste': false
+    'increaseIndentPattern': '(?x)
+      (?<!\\,)\\s*
+      (
+          ((?:(?=\\w)(?<![\\w-]))(a|abbr|acronym|address|area|article|aside|audio|b|base|bdi|bdo|big|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|data|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|embed|eventsource|fieldset|figure|figcaption|footer|form|frame|frameset|(h[1-6])|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|main|map|mark|math|menu|menuitem|meta|meter|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|picture|pre|progress|q|rb|rp|rt|rtc|ruby|s|samp|script|section|select|small|source|span|strike|strong|style|sub|summary|sup|svg|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr)(?:(?<=\\w)(?![\\w-])))
+        | ((?:(?=\\w)(?<![\\w-]))(vkern|view|use|tspan|tref|title|textPath|text|symbol|switch|svg|style|stop|set|script|rect|radialGradient|polyline|polygon|pattern|path|mpath|missing-glyph|metadata|mask|marker|linearGradient|line|image|hkern|glyphRef|glyph|g|foreignObject|font-face-uri|font-face-src|font-face-name|font-face-format|font-face|font|filter|feTurbulence|feTile|feSpotLight|feSpecularLighting|fePointLight|feOffset|feMorphology|feMergeNode|feMerge|feImage|feGaussianBlur|feFuncR|feFuncG|feFuncB|feFuncA|feFlood|feDistantLight|feDisplacementMap|feDiffuseLighting|feConvolveMatrix|feComposite|feComponentTransfer|feColorMatrix|feBlend|ellipse|desc|defs|cursor|color-profile|clipPath|circle|animateTransform|animateMotion|animateColor|animate|altGlyphItem|altGlyphDef|altGlyph|a)(?:(?<=\\w)(?![\\w-])))
+        | (\\{)
+        | (\\*)
+        | (\\&)
+        | ((\\.)[a-zA-Z0-9_-]+(?:(?<=\\w)(?![\\w-])))
+        | ((\\#[a-zA-Z][a-zA-Z0-9_-]*)(?:(?<=\\w)(?![\\w-])))
+        | ((:+)(after|before|content|first-letter|first-line|host|(-(moz|webkit|ms)-)?selection)(?:(?<=\\w)(?![\\w-])))
+        | ((:)((first|last)-child|(first|last|only)-of-type|empty|root|target|first|left|right)\\b)
+        | ((:)(checked|enabled|default|disabled|indeterminate|invalid|optional|required|valid)\\b)
+        | ((:)(not)\\(.*?\\))
+        | (((:)nth-(?:(?:last-)?child|(?:last-)?of-type))(\\()(\\-?(?:\\d+n?|n)(?:\\+\\d+)?|even|odd)(\\)))
+        | (((:)dir)\\s*(?:(\\()(ltr|rtl)?(\\)))?)
+        | (((:)lang)\\s*(?:(\\()(\\w+(-\\w+)?)?(\\)))?)
+        | ((:)(active|hover|link|visited|focus)\\b)
+        | ((::)(shadow)\\b)
+        | (\\])
+      )[^\\S\\n]*$'
+    'decreaseIndentPattern': '^\\s*(\\})$'
   'autocomplete':
     'symbols':
       'variable':
