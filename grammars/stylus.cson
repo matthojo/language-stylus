@@ -600,9 +600,23 @@
           {
             'include': '#string'
           }
-        ]      }
+        ]
+      }
       {
-        'match': '(url|counter|counters|attr)(?=\\()'
+        'begin': '(calc)(\\()'
+        'beginCaptures':
+          '1': 'name': 'support.function.misc.css'
+          '2': 'name': 'punctuation.section.function.css'
+        'end': '(?=\\))'
+        'name': 'meta.function.calc.css'
+        'patterns': [
+          {
+            'include': '#property_values'
+          }
+        ]
+      }
+      {
+        'match': '(url|counter|counters|attr|calc)(?=\\()'
         'name': 'support.function.misc.css'
       }
       {
