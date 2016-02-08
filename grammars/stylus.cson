@@ -276,7 +276,12 @@
     'end': '(?=\\n|;|\\}|$)'
     'name': 'meta.property-value.css'
     'patterns': [
-      'include': '#property_values'
+      {
+        'include': '#property_values'
+      }
+      {
+        'match': ',\\s*\\n?'
+      }
     ]
   'property_values':
     'patterns': [
