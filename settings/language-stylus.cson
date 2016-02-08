@@ -1,7 +1,7 @@
 '.source.css.stylus':
   'editor':
     'commentStart': '// '
-    'autoIndentOnPaste': true
+    'autoIndentOnPaste': false
     'increaseIndentPattern': '(?x)
       (?<!\\,)\\s*
       (
