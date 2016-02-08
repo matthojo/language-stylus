@@ -245,7 +245,7 @@
       }
     ]
   'variable_declaration':
-    'begin': '(\\$[a-zA-Z_-][a-zA-Z0-9_-]*)[^\\S\\n]*(\\=|\\?\\=|\\:\\=)'
+    'begin': '^[^\\S\\n]*(\\$?[a-zA-Z_-][a-zA-Z0-9_-]*)[^\\S\\n]*(\\=|\\?\\=|\\:\\=)'
     'beginCaptures':
       '1': 'name': 'variable.stylus'
       '2': 'name': 'keyword.operator.stylus'
