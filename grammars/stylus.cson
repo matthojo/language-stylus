@@ -501,6 +501,21 @@
         ]
       }
       {
+        'begin': '\\s*(@)(extend)\\b\\s*'
+        'beginCaptures':
+          '1': 'name': 'punctuation.definition.keyword.stylus'
+          '2': 'name': 'keyword.control.at-rule.extend.stylus'
+        'end': '\\s*((?=;|$|\\n))'
+        'endCaptures':
+          '1': 'name': 'punctuation.terminator.rule.css'
+        'name': 'meta.at-rule.extend.css'
+        'patterns': [
+          {
+            'include': '#selector'
+          }
+        ]
+      }
+      {
         'match': '^\\s*(@)(font-face)\\b'
         'captures':
           '1': 'name': 'punctuation.definition.keyword.stylus'
