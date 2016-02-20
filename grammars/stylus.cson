@@ -388,7 +388,7 @@
         'include': '#stylus_keywords'
       }
       {
-        'include': '#variable'
+        'include': '#property_variable'
       }
     ]
   'numeric':
@@ -424,7 +424,7 @@
             'include': '#numeric'
           }
           {
-            'include': '#variable'
+            'include': '#property_variable'
           }
         ]
       }
@@ -601,6 +601,16 @@
   'variable':
     'match': '(\\$[a-zA-Z_-][a-zA-Z0-9_-]*)'
     'name': 'variable.stylus'
+  'property_variable':
+    'patterns': [
+      {
+        'include': '#variable'
+      }
+      {
+        'match': '(?<!^)(\\@[a-zA-Z_-][a-zA-Z0-9_-]*)'
+        'name': 'variable.property.stylus'
+      }
+    ]
   'function':
     'begin': '(?=[a-zA-Z_-][a-zA-Z0-9_-]*\\()'
     'end': '(\\))'
@@ -783,7 +793,7 @@
             'include': '#numeric'
           }
           {
-            'include': '#variable'
+            'include': '#property_variable'
           }
           {
             'include': '#interpolation'
@@ -805,7 +815,7 @@
             'include': '#color'
           }
           {
-            'include': '#variable'
+            'include': '#property_variable'
           }
           {
             'include': '#interpolation'
@@ -824,7 +834,7 @@
             'include': '#numeric'
           }
           {
-            'include': '#variable'
+            'include': '#property_variable'
           }
           {
             'include': '#interpolation'
