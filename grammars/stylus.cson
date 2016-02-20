@@ -47,12 +47,6 @@
   {
     'include': '#function'
   }
-  {
-    'include': '#stylus_constants'
-  }
-  {
-    'include': '#stylus_keywords'
-  }
 ]
 'repository':
   'comment':
@@ -265,11 +259,14 @@
     ]
   'declaration':
     'begin': '((?<=^)[^\\S\\n]+)|((?<=;)[^\\S\\n]*)|((?<=\\{)[^\\S\\n]*)'
-    'end': '(\\n)|(;)|(?=\\})'
+    'end': '(?=\\n)|(;)|(?=\\})|(\\n)'
     'endCaptures':
       '2': 'name': 'punctuation.terminator.rule.css'
     'name': 'meta.property-list.css'
     'patterns': [
+      {
+        'match': '(?:(?<=^)[^\\S\\n]+(\\n))'
+      }
       {
         'match': '\\G\\s*(counter-reset|counter-increment)(?:(:)|[^\\S\\n])[^\\S\\n]*([a-zA-Z_-][a-zA-Z0-9_-]*)'
         'captures':
@@ -324,17 +321,20 @@
       }
     ]
   'property_value':
-    'begin': '\\G\\s*(?:(:)|(\\s))\\s*(?!&)'
+    'begin': '\\G(?:(:)|(\\s))(\\s*)(?!&)'
     'beginCaptures':
       '1': 'name': 'punctuation.separator.key-value.css'
-    'end': '(?=\\n|;|\\}|$)'
+      '2': 'name': 'punctuation.separator.key-value.css'
+    'end': '(?=\\n|;|\\})'
+    'endCaptures':
+      '1': 'name': 'punctuation.terminator.rule.css'
     'name': 'meta.property-value.css'
     'patterns': [
       {
         'include': '#property_values'
       }
       {
-        'match': ',\\s*\\n?'
+        'match': '[^\\n]+?'
       }
     ]
   'property_values':
@@ -595,24 +595,6 @@
   'font_name':
     'match': '(\\b(?i:arial|century|comic|courier|cursive|fantasy|futura|garamond|georgia|helvetica|impact|lucida|monospace|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif)\\b)'
     'name': 'support.constant.font-name.css'
-  'stylus_constants':
-    'match': '\\b(true|false|null)\\b'
-    'name': 'constant.language.stylus'
-  'stylus_keywords':
-    'patterns': [
-      {
-        'match': '(\\b|\\s)(return|else)\\b'
-        'name': 'keyword.control.stylus'
-      }
-      {
-        'match': '(\\b|\\s)(in|is defined|is a)\\b'
-        'name': 'keyword.other.stylus'
-      }
-      {
-        'match': '\\barguments\\b'
-        'name': 'variable.language.stylus'
-      }
-    ]
   'variable':
     'match': '(\\$[a-zA-Z_-][a-zA-Z0-9_-]*)'
     'name': 'variable.stylus'
