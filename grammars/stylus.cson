@@ -565,8 +565,15 @@
       }
     ]
   'operator':
-    'match': '((?:\\?|:|!|~|\\+|(\\s-\\s)|(?:\\*)?\\*|\\/|%|(\\.)?\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|(?<!:)not|or|and)\\b)'
-    'name': 'keyword.operator.stylus'
+    'patterns': [
+      {
+        'match': '((?:\\?|:|!|~|\\+|(\\s-\\s)|(?:\\*)?\\*|\\/|%|(\\.)?\\.\\.|<|>|(?:=|:|\\?|\\+|-|\\*|\\/|%|<|>)?=|!=)|\\b(?:in|is(?:nt)?|(?<!:)not|or|and)\\b)'
+        'name': 'keyword.operator.stylus'
+      },
+      {
+        'include': '#char_escape'
+      }
+    ]
   'font_name':
     'match': '(\\b(?i:arial|century|comic|courier|cursive|fantasy|futura|garamond|georgia|helvetica|impact|lucida|monospace|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif)\\b)'
     'name': 'support.constant.font-name.css'
@@ -888,3 +895,6 @@
         'include': '#operator'
       }
     ]
+  'char_escape':
+    'name': 'constant.character.escape.stylus'
+    'match': '\\\\(.)'
