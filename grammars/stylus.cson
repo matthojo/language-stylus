@@ -14,10 +14,10 @@
     'include': '#at_rule'
   }
   {
-    'include': '#selector'
+    'include': '#variable_declaration'
   }
   {
-    'include': '#variable_declaration'
+    'include': '#selector'
   }
   {
     'include': '#declaration'
