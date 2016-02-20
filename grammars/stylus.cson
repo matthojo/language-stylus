@@ -14,7 +14,16 @@
     'include': '#at_rule'
   }
   {
+    'include': '#language_keywords'
+  }
+  {
+    'include': '#language_constants'
+  }
+  {
     'include': '#variable_declaration'
+  }
+  {
+    'include': '#function'
   }
   {
     'include': '#selector'
@@ -43,9 +52,6 @@
   }
   {
     'include': '#operator'
-  }
-  {
-    'include': '#function'
   }
 ]
 'repository':
@@ -265,6 +271,12 @@
     'name': 'meta.property-list.css'
     'patterns': [
       {
+        'include': '#language_keywords'
+      }
+      {
+        'include': '#language_constants'
+      }
+      {
         'match': '(?:(?<=^)[^\\S\\n]+(\\n))'
       }
       {
@@ -314,7 +326,7 @@
     'end': '(;)|(?=\\n|\\}|$)'
     'endCaptures':
       '1': 'name': 'punctuation.terminator.rule.css'
-    'name': 'meta.property.css'
+    # 'name': 'meta.property.css'
     'patterns': [
       {
         'include': '#property_value'
@@ -340,7 +352,16 @@
   'property_values':
     'patterns': [
       {
+        'include': '#function'
+      }
+      {
         'include': '#comment'
+      }
+      {
+        'include': '#language_keywords'
+      }
+      {
+        'include': '#language_constants'
       }
       # TODO: Check if stylus supports CSS4 variables
       # {
@@ -380,9 +401,6 @@
       }
       {
         'include': '#operator'
-      }
-      {
-        'include': '#function'
       }
       {
         'include': '#stylus_keywords'
@@ -615,22 +633,28 @@
       '1': 'name': 'punctuation.section.function.css'
     'patterns': [
       {
-        'begin': '(url)(\\()'
+        'begin': '(format|url|local)(\\()'
         'beginCaptures':
-          '1': 'name': 'support.function.misc.url.css'
+          '1': 'name': 'support.function.misc.css'
           '2': 'name': 'punctuation.section.function.css'
         'end': '(?=\\))'
-        'name': 'meta.function.misc.url.css'
+        'name': 'meta.function.misc.css'
         'patterns': [
+          {
+            'match': '(?<=\\()[^\\)\\s]*(?=\\))'
+            'name': 'string.css'
+          }
           {
             'include': '#string'
           }
           {
-            'match': '[^\\)]*'
-            'name': 'string.url.css'
+            'include': '#variable'
           }
           {
-            'include': '#interpolation'
+            'include': '#operator'
+          }
+          {
+            'match': '\\s*'
           }
         ]
       }
@@ -839,7 +863,7 @@
         ]
       }
       {
-        'match': '(url|counter|counters|attr|calc)(?=\\()'
+        'match': '(url|local|format|counter|counters|attr|calc)(?=\\()'
         'name': 'support.function.misc.css'
       }
       {
@@ -908,3 +932,21 @@
   'char_escape':
     'name': 'constant.character.escape.stylus'
     'match': '\\\\(.)'
+  'language_constants':
+    'match': '\\b(true|false|null)\\b'
+    'name': 'constant.language.stylus'
+  'language_keywords':
+    'patterns': [
+      {
+        'match': '(\\b|\\s)(return|else|for|unless|if|else)\\b'
+        'name': 'keyword.control.stylus'
+      }
+      {
+        'match': '(\\b|\\s)(!important|in|is defined|is a)\\b'
+        'name': 'keyword.other.stylus'
+      }
+      {
+        'match': '\\barguments\\b'
+        'name': 'variable.language.stylus'
+      }
+    ]
