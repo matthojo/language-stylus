@@ -243,6 +243,9 @@
         'match': '(?i)(\\[)\\s*(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)(?:\\s*([~|^$*]?=)\\s*(?:(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)|((?>([\'"])(?:[^\\\\]|\\\\.)*?(\\6)))))?\\s*(\\])'
         'name': 'meta.attribute-selector.css'
       }
+      {
+        'include': '#interpolation'
+      }
     ]
   'variable_declaration':
     'begin': '^[^\\S\\n]*(\\$?[a-zA-Z_-][a-zA-Z0-9_-]*)[^\\S\\n]*(\\=|\\?\\=|\\:\\=)'
@@ -290,6 +293,9 @@
       }
       {
         'include': '#property'
+      }
+      {
+        'include': '#interpolation'
       }
       {
         'include': '$self'
@@ -606,6 +612,9 @@
             'match': '[^\\)]*'
             'name': 'string.url.css'
           }
+          {
+            'include': '#interpolation'
+          }
         ]
       }
       {
@@ -635,6 +644,9 @@
           {
             'include': '#string'
           }
+          {
+            'include': '#interpolation'
+          }
         ]
       }
       {
@@ -659,6 +671,9 @@
           }
           {
             'include': '#string'
+          }
+          {
+            'include': '#interpolation'
           }
         ]
       }
@@ -690,6 +705,9 @@
           {
             'include': '#numeric'
           }
+          {
+            'include': '#interpolation'
+          }
         ]
       }
       {
@@ -710,6 +728,9 @@
           {
             'match': '\\b(start|end)\\b'
             'name': 'support.constant.timing.steps.direction.css'
+          }
+          {
+            'include': '#interpolation'
           }
         ]
       }
@@ -735,6 +756,9 @@
             'match': '\\b(to|bottom|right|left|top|circle|ellipse|center|closest-side|closest-corner|farthest-side|farthest-corner|at)\\b'
             'name': 'support.constant.gradient.css'
           }
+          {
+            'include': '#interpolation'
+          }
         ]
       }
       {
@@ -750,6 +774,9 @@
           }
           {
             'include': '#variable'
+          }
+          {
+            'include': '#interpolation'
           }
         ]
       }
@@ -770,6 +797,9 @@
           {
             'include': '#variable'
           }
+          {
+            'include': '#interpolation'
+          }
         ]
       }
       {
@@ -785,6 +815,9 @@
           }
           {
             'include': '#variable'
+          }
+          {
+            'include': '#interpolation'
           }
         ]
       }
@@ -821,6 +854,9 @@
             'name': 'punctuation.separator.parameter.css'
           }
           {
+            'include': '#interpolation'
+          }
+          {
             'include': '#property_values'
           }
         ]
@@ -828,5 +864,27 @@
       {
         'match': '\\('
         'name': 'punctuation.section.function.css'
+      }
+    ]
+  'interpolation':
+    'name': 'meta.interpolation.stylus'
+    'begin': '(?:(\\{)[^\\S\\n]*)(?=[^;=]*[^\\S\\n]*\\})'
+    'beginCaptures':
+      '1': 'name': 'meta.brace.curly'
+    'end': '(?:[^\\S\\n]*(\\}))|\\n|$'
+    'endCaptures':
+      '1': 'name': 'meta.brace.curly'
+    'patterns': [
+      {
+        'include': '#variable'
+      }
+      {
+        'include': '#numeric'
+      }
+      {
+        'include': '#string'
+      }
+      {
+        'include': '#operator'
       }
     ]
