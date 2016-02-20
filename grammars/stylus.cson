@@ -109,6 +109,12 @@
         'name': 'meta.selector.stylus'
       }
       {
+        'match': '\\s*(\\&)([a-zA-Z0-9_-]+)\\s*'
+        'captures':
+          '2': 'name': 'entity.other.attribute-name.parent-selector-suffix.stylus'
+        'name': 'meta.selector.stylus'
+      }
+      {
         'match': '\\s*(\\&)\\s*'
         'name': 'meta.selector.stylus'
       }
