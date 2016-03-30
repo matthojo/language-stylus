@@ -525,7 +525,7 @@
         ]
       }
       {
-        'begin': '\\s*(@)(extend)\\b\\s*'
+        'begin': '\\s*(@)(extend[s]?)\\b\\s*'
         'beginCaptures':
           '1': 'name': 'punctuation.definition.keyword.stylus'
           '2': 'name': 'keyword.control.at-rule.extend.stylus'
