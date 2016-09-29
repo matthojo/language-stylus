@@ -29,3 +29,9 @@
       'variable':
         'selector': '.variable'
         'typePriority': 2
+      'mixin':
+          'selector': '.entity.name.function, .support.function'
+          'typePriority': 3
+      'selector':
+          'selector': '.attribute-name.id, .attribute-name.class'
+          'typePriority': 1
