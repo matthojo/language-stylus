@@ -10,6 +10,7 @@
         | (\\{)
         | (\\*)
         | (\\&)
+        | (\\^\\[-?\\d+(?:\\.\\.-?\\d+)?])
         | ((?<name>[a-zA-Z0-9_-]+(?:(?<=\\w)(?![\\w-]))){0}(((?<!\\d)\\.\\g<name>)|(?<=\\d)\\.\\D\\g<name>))
         | ((\\#[a-zA-Z][a-zA-Z0-9_-]*)(?:(?<=\\w)(?![\\w-])))
         | ((:+)(after|before|content|first-letter|first-line|host|(-(moz|webkit|ms)-)?selection)(?:(?<=\\w)(?![\\w-])))

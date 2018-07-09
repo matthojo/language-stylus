@@ -115,7 +115,13 @@
         'name': 'meta.selector.stylus'
       }
       {
-        'match': '\\s*(\\&)\\s*'
+        'match': '\\s*(\\^\\[-?\\d+(?:\\.\\.-?\\d+)?])([a-zA-Z0-9_-]+)\\s*'
+        'captures':
+          '2': 'name': 'entity.other.attribute-name.partial-selector-suffix.stylus'
+        'name': 'meta.selector.stylus'
+      }
+      {
+        'match': '\\s*(\\&|\\^\\[-?\\d+(?:\\.\\.-?\\d+)?])\\s*'
         'name': 'meta.selector.stylus'
       }
       {
